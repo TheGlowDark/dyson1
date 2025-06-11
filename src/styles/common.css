@@ -1,9 +1,23 @@
+@font-face {
+    font-family: 'NAMU';
+    src: url('../fonts/NAMU-1990.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .container{
-    padding: 0px;
-    margin: 0 0px;
+    max-width: 1420px; /* ширина контейнера(отступы слева и справа 280px + padding 30px) */
+    margin: 0 auto;
+    padding: 0 30px; 
+    height: 100%;
 }
 
 html, body{
     margin: 0;
     padding: 0;
+}
+
+/* Применяем шрифт NAMU ко всем заголовкам */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'NAMU', sans-serif;
 }
