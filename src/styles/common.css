@@ -12,6 +12,13 @@
     height: 100%;
 }
 
+.promo_container{
+    max-width: 1920px;
+    padding-left: 280px;
+    padding-right: 0px;
+    margin: auto;
+}
+
 html, body{
     margin: 0;
     padding: 0;
@@ -21,3 +28,32 @@ html, body{
 h1, h2, h3, h4, h5, h6 {
     font-family: 'NAMU', sans-serif;
 }
+
+h1 {
+    font-size: 46px;
+}
+
+h2 {
+    font-size: 38px;
+}
+
+h3 {
+    font-size: 32px;
+}
+
+h4 {
+    font-size: 28px;
+}
+
+h5 {
+    font-size: 24px;
+}
+
+h6 {
+    font-size: 20px;
+}
+
+p{
+    font-family: 'Open Sans', sans-serif;
+}
+
