@@ -4,7 +4,7 @@ import promo_img from "../../images/promo_images/promo1.png";
 
 const Promo = () => {
     return (<section className="promo">
-        <div className='promo_container'>
+        <div className='container'>
             <div className='promo__content'>
                 <div className='promo__text'>
                     <h1 className='promo__title'>

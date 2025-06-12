@@ -6,9 +6,9 @@
 }
 
 .container{
-    max-width: 1420px; /* ширина контейнера(отступы слева и справа 280px + padding 30px) */
+    max-width: 1920px; /* ширина контейнера(отступы слева и справа 280px + padding 30px) */
     margin: 0 auto;
-    padding: 0 30px; 
+    padding: 0 280px; 
     height: 100%;
 }
 
