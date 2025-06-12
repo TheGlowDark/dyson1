@@ -21,44 +21,86 @@ const SpecialOffers = () => {
         }
     };
 
+    // Get products count from ProductGrid
+    const products = [
+        {
+            id: 1,
+            image: "/images/products/dyson-hd07-blue.png",
+            title: "Фен Dyson Supersonic HD07 синий медный с 5 насадками в чехле и расческами",
+            price: 59990,
+            oldPrice: 69990,
+            inStock: true,
+            discount: 15,
+        },
+        {
+            id: 2,
+            image: "/images/products/dyson-hd07-stand.png",
+            title: "Фен Dyson Supersonic HD07 с 5 насадками и подставкой",
+            price: 47990,
+            oldPrice: 51990,
+            inStock: true,
+            discount: 15,
+        },
+        {
+            id: 3,
+            image: "/images/products/dyson-4-purple.png",
+            title: "Фен Dyson Supersonic 4 насадки HD03 с чехлом для хранения цвет сирень",
+            price: 46990,
+            oldPrice: 51990,
+            inStock: true,
+            discount: 15,
+        },
+        {
+            id: 4,
+            image: "/images/products/dyson-hd07-blue.png",
+            title: "Фен Dyson Supersonic HD07 синий медный с 5 насадками в чехле и расческами",
+            price: 59990,
+            oldPrice: 69990,
+            inStock: true,
+            discount: 15,
+        },
+        {
+            id: 5,
+            image: "/images/products/dyson-hd07-stand.png",
+            title: "Фен Dyson Supersonic HD07 с 5 насадками и подставкой",
+            price: 47990,
+            oldPrice: 51990,
+            inStock: true,
+            discount: 15,
+        },
+        {
+            id: 6,
+            image: "/images/products/dyson-4-purple.png",
+            title: "Фен Dyson Supersonic 4 насадки HD03 с чехлом для хранения цвет сирень",
+            price: 46990,
+            oldPrice: 51990,
+            inStock: true,
+            discount: 15,
+        },
+        {
+            id: 7,
+            image: "/images/products/dyson-hd07-stand.png",
+            title: "Фен Dyson Supersonic HD07 с 5 насадками и подставкой",
+            price: 47990,
+            oldPrice: 51990,
+            inStock: true,
+            discount: 15,
+        }
+    ];
+
     return (
         <div className="special-offers">
             <div className="container">
+            <div className="special-offers-content">
                 <div className="special-offers__header">
                     <div className="special-offers__title-block">
-                        <h1 className="special-offers__title">Спецпредложения</h1>
-                        <span className="special-offers__count">14</span>
+                        <h1 className="special-offers__title">Спецпредложения
+                        <span className="special-offers__count"> {products.length}</span>
+                        </h1>
                     </div>
-                    <button className="special-offers__show-more">Показать еще</button>
-                </div>
-
-                <div className="special-offers__filters">
-                    <div className="special-offers__tags">
-                        {filters.map(filter => (
-                            <button
-                                key={filter.id}
-                                className={`special-offers__tag ${activeFilters.includes(filter.id) ? 'active' : ''}`}
-                                onClick={() => handleFilterClick(filter.id)}
-                            >
-                                {filter.label}
-                            </button>
-                        ))}
-                    </div>
-                    
-                    <div className="special-offers__sort">
-                        <select 
-                            className="sort-select" 
-                            value={sortBy}
-                            onChange={(e) => setSortBy(e.target.value)}
-                        >
-                            <option value="popular">Сначала популярные</option>
-                            <option value="price-asc">По возрастанию цены</option>
-                            <option value="price-desc">По убыванию цены</option>
-                        </select>
-                    </div>
-                </div>
-
+                </div>                    
                 <ProductGrid />
+            </div>
             </div>
         </div>
     );

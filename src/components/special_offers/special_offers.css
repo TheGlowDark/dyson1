@@ -1,13 +1,13 @@
-.special-offers {
-    padding: 40px 0;
+.special-offers{
+    background-color: #F8F8F8;
 }
 
-.special-offers__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 32px;
+
+.special-offers-content{
+    padding-top: 150px;
+    padding-bottom: 150px;
 }
+
 
 .special-offers__title-block {
     display: flex;
@@ -16,15 +16,13 @@
 }
 
 .special-offers__title {
-    font-size: 32px;
+    font-size: 46px;
     font-weight: 600;
     color: #333;
-    margin: 0;
 }
 
 .special-offers__count {
-    font-size: 20px;
-    color: #E41E31;
+    color: #C5358C;
 }
 
 .special-offers__show-more {
@@ -65,6 +63,8 @@
     cursor: pointer;
     transition: all 0.2s;
 }
+
+
 
 .special-offers__tag:hover {
     border-color: #333;
