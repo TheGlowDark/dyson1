@@ -41,7 +41,7 @@ const Reviews = () => {
       <div className="container">
         <div className='reviews-content'>
         <div className="reviews-header">
-          <h2 className="reviews-title">Отзывы <span className="reviews-title__count">151</span></h2>
+          <h2 className="reviews-title">Отзывы <span className="reviews-title__count">{reviews.length}</span></h2>
           <div className="reviews-header__row">
             <div className="reviews-rating-block">
               <span className="reviews-rating-value">5</span>
