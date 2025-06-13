@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import openContentIcon from '../../images/icons/open-content.svg'; // Removed as SVG will be inlined
+import openContentIcon from '../../images/icons/open-content.svg';
+import openedContentIcon from '../../images/icons/opened-content.svg';
 
 const FAQRow = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +14,7 @@ const FAQRow = ({ question, answer }) => {
       <div className="faq-question" onClick={toggleOpen}>
         <p>{question}</p>
         <img 
-          src={openContentIcon} 
+          src={isOpen ? openedContentIcon : openContentIcon} 
           alt="Toggle FAQ" 
           className={`faq-toggle ${isOpen ? 'open' : ''}`}
         />

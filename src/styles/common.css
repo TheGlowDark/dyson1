@@ -31,26 +31,32 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
     font-size: 46px;
+    font-family: 'NAMU';
 }
 
 h2 {
     font-size: 38px;
+    font-family: 'NAMU';
 }
 
 h3 {
     font-size: 32px;
+    font-family: 'NAMU';
 }
 
 h4 {
     font-size: 28px;
+    font-family: 'NAMU';
 }
 
 h5 {
     font-size: 24px;
+    font-family: 'Open Sans';
 }
 
 h6 {
     font-size: 20px;
+    font-family: 'Open Sans';
 }
 
 p{

@@ -44,6 +44,7 @@
 
 .faq-toggle.open {
     transform: rotate(45deg);
+    fill: #C5358C;
     color: #C5358C;
 }
 

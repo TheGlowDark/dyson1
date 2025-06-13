@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import "./header.css";
 
-import logoImg from './../../images/icons/logo.png';
+import logoImg from './../../images/logo.png';
 import burger from './../../images/icons/burger.png';
 import cart from './../../images/icons/cart.png';
 
@@ -45,7 +45,6 @@ function Header() {
 }
 
 export default Header;
-
 
 // import { useState } from 'react';
 // import "./header.css";

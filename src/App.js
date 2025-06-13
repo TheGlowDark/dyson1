@@ -8,6 +8,8 @@ import SpecialOffers from './components/special_offers/special_offers'
 import Reviews from './components/reviews/reviews'; 
 import FAQ from './components/FAQ/FAQ';
 import News from './components/news/news';
+import ContactSubscription from './components/contact_subscription/ContactSubscription';
+import Footer from './components/footer/Footer'; 
 
 function App() {
   return (
@@ -20,6 +22,9 @@ function App() {
       <SpecialOffers/>
       <Reviews/>
       <FAQ/>
+      <News/>
+      <ContactSubscription/>
+      <Footer/>
     </div>
   );
 }
