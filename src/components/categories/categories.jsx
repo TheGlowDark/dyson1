@@ -13,21 +13,25 @@ const Sections = () => {
             id: 1,
             title: 'Акции',
             image: salesImg,
+            link: '/sales'
         },
         {
             id: 2,
             title: 'Фены',
             image: dryerImg,
+            link: '/hairdryers'
         },
         {
             id: 3,
             title: 'Стайлеры',
             image: stylerImg,
+            link: '/stylers'
         },
         {
             id: 4,
             title: 'Выпрямители',
             image: rectifierImg,
+            link: '/rectifiers'
         }
     ];
 
@@ -36,7 +40,7 @@ const Sections = () => {
             <div className="container">
                 <div className="sections__grid">
                     {categories.map((category) => (
-                        <a href="#!" className="sections__card" key={category.id}>
+                        <a href={category.link} className="sections__card" key={category.id}>
                             <div className="img_container">
                                 <img 
                                     src={category.image} 
@@ -44,14 +48,14 @@ const Sections = () => {
                                     className="sections__image"
                                 />
                             </div>
-                            <div className = "sections__text">
-                            <h3 className="sections__title">{category.title}</h3>
-                            <div className="sections__description">
-                                <p className='More'>
-                                Подробнее
-                                <img src = {arrow} className='arrow'/>
-                                </p>
-                            </div>
+                            <div className="sections__text">
+                                <h3 className="sections__title">{category.title}</h3>
+                                <div className="sections__description">
+                                    <p className='More'>
+                                        Подробнее
+                                        <img src={arrow} className='arrow' alt="arrow"/>
+                                    </p>
+                                </div>
                             </div>
                         </a>
                     ))}

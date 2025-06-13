@@ -1,31 +1,26 @@
-import Header from './components/header/Header'
-import Promo from './components/promo/Promo'
-import Sections from './components/categories/categories';
-import Experts from './components/experts/experts';
-import Advantages from './components/advantages/advantages';
-import ProductGrid from './components/product_grid/product_grid';
-import SpecialOffers from './components/special_offers/special_offers'
-import Reviews from './components/reviews/reviews'; 
-import FAQ from './components/FAQ/FAQ';
-import News from './components/news/news';
-import ContactSubscription from './components/contact_subscription/ContactSubscription';
-import Footer from './components/footer/Footer'; 
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/home';
+import Hairdryers from './pages/hairdryers'; // Assuming you want a separate page for hairdryers
+import './styles/common.css';
+
+// Import other components that are always visible (like Header, Footer)
+import Header from './components/header/Header';
+import Footer from './components/footer/Footer';
 
 function App() {
   return (
-    <div className="App">
-      <Header/>
-      <Promo/>
-      <Sections/>
-      <Experts/>
-      <Advantages/>
-      <SpecialOffers/>
-      <Reviews/>
-      <FAQ/>
-      <News/>
-      <ContactSubscription/>
-      <Footer/>
-    </div>
+    <Router>
+      <div className="App">
+        <Header /> {/* Header visible on all pages */}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/hairdryers" element={<Hairdryers />} />
+          {/* Add other routes for categories, items, etc., here as needed */}
+        </Routes>
+        <Footer /> {/* Footer visible on all pages */}
+      </div>
+    </Router>
   );
 }
 

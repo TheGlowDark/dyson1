@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProductCard from '../product_card/product_card';
 import './product_grid.css';
 import dysonHd07Blue from '../../images/product_cards/dyson-hd07-blue.png';
@@ -6,7 +6,7 @@ import dysonHd07Stand from '../../images/product_cards/dyson-hd07-stand.png';
 import dyson4Purple from '../../images/product_cards/dyson-4-purple.png';
 import arrowCategory from '../../images/icons/arrow_category.svg';
 
-const ProductGrid = () => {
+const ProductGrid = ({ onProductCountChange }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [sortBy, setSortBy] = useState('popular');
     
@@ -96,6 +96,12 @@ const ProductGrid = () => {
             orderCount: 189
         }
     ];
+
+    useEffect(() => {
+        if (onProductCountChange) {
+            onProductCountChange(products.length);
+        }
+    }, [products.length, onProductCountChange]);
 
     const ITEMS_PER_ROW = 3;
     const MAX_ROWS = 2;
