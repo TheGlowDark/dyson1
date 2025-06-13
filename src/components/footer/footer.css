@@ -85,7 +85,9 @@
 }
 
 .footer-contact-info {
-    
+    font-family: "NAMU";
+    font-size: 24px;
+    font-weight: 700;
     line-height: 150%;
     padding-bottom: 55px;
 }
