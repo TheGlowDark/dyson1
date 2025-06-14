@@ -23,7 +23,9 @@ const ProductCard = ({
     };
 
     const handleIncrement = () => {
-        setQuantity(quantity + 1);
+        if (quantity < 99) {
+            setQuantity(quantity + 1);
+        }
     };
 
     const handleQuantityChange = (e) => {
@@ -31,12 +33,17 @@ const ProductCard = ({
         if (value === '') {
             setQuantity('');
         } else {
-            setQuantity(Math.max(1, parseInt(value, 10)));
+            const parsedValue = parseInt(value, 10);
+            setQuantity(Math.min(Math.max(1, parsedValue), 99));
         }
     };
 
     const handleQuantityBlur = () => {
-        if (!quantity || quantity < 1) setQuantity(1);
+        if (!quantity || quantity < 1) {
+            setQuantity(1);
+        } else if (quantity > 99) {
+            setQuantity(99);
+        }
     };
 
     const formatDate = (date) => {
