@@ -3,6 +3,7 @@ import NewsCard from '../news_card/news_card.jsx';
 import './news.css';
 import news_image from '../../images/news/news_image.png';
 import expandIcon from '../../images/icons/expand.svg';
+import ToggleExpandButton from '../show_more/ToggleExpandButton.jsx'
 
 const News = () => {
     const newsData = [
@@ -78,14 +79,12 @@ const News = () => {
                     ))}
                 </div>
                 {newsData.length > 3 && (
-                    <button className="show-more-button" onClick={handleToggle}>
-                        <p>{isExpanded ? 'Свернуть' : 'Показать еще'}</p>
-                        <img 
-                            src={expandIcon} 
-                            alt="Toggle" 
-                            className={`show-more-arrow ${isExpanded ? 'rotated' : ''}`}
-                        />
-                    </button>
+                    <ToggleExpandButton 
+                        onClick={handleToggle}
+                        isExpanded={isExpanded}
+                        expandedText="Свернуть"
+                        collapsedText="Показать еще"
+                    />
                 )}
             </div>
         </section>

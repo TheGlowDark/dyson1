@@ -21,7 +21,7 @@
     text-decoration: underline;
 }
 
-.show-more-button {
+/*.show-more-button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -50,4 +50,4 @@
 
 .show-more-arrow.rotated {
     transform: rotate(180deg);
-}
+}*/
