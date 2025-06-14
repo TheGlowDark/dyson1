@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { CartProvider } from './context/CartContext';
 import Home from './pages/Home';
 import Hairdryers from './pages/hairdryers'; // Assuming you want a separate page for hairdryers
 import Product from './pages/product'; // Import the new Product page
@@ -11,18 +12,20 @@ import Footer from './components/footer/Footer';
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Header /> {/* Header visible on all pages */}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/hairdryers" element={<Hairdryers />} />
-          <Route path="/product/:id" element={<Product />} /> {/* Use the new Product page */}
-          {/* Add other routes for categories, items, etc., here as needed */}
-        </Routes>
-        <Footer /> {/* Footer visible on all pages */}
-      </div>
-    </Router>
+    <CartProvider>
+      <Router>
+        <div className="App">
+          <Header /> {/* Header visible on all pages */}
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/hairdryers" element={<Hairdryers />} />
+            <Route path="/product/:id" element={<Product />} /> {/* Use the new Product page */}
+            {/* Add other routes for categories, items, etc., here as needed */}
+          </Routes>
+          <Footer /> {/* Footer visible on all pages */}
+        </div>
+      </Router>
+    </CartProvider>
   );
 }
 

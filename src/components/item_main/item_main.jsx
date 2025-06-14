@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useCart } from '../../context/CartContext';
 import './item_main.css';
 
 // Import product images and data from where ProductGrid is getting it
@@ -12,9 +13,11 @@ import img1 from '../../images/product_main/img1.png';
 import img2 from '../../images/product_main/img2.png';
 import img3 from '../../images/product_main/img3.png';
 import img4 from '../../images/product_main/img4.png';
+import img5 from '../../images/product_main/img5.png';
 
 import heartIcon from '../../images/icons/heart.svg';
 import cartIcon from '../../images/icons/cart.svg';
+import arrowIcon from '../../images/icons/arrow_item_photo.svg';
 
 const allProducts = [
     {
@@ -64,6 +67,7 @@ const Item = () => {
     const [quantity, setQuantity] = useState(1);
     const [product, setProduct] = useState(null);
     const [mainImage, setMainImage] = useState(null);
+    const { addToCart } = useCart();
 
     useEffect(() => {
         const foundProduct = allProducts.find(p => p.id === parseInt(id));
@@ -71,7 +75,7 @@ const Item = () => {
             setProduct(foundProduct);
             setMainImage(foundProduct.image);
         } else {
-            setProduct(null); // Or handle product not found state
+            setProduct(null);
         }
     }, [id]);
 
@@ -98,8 +102,14 @@ const Item = () => {
         if (!quantity || quantity < 1) setQuantity(1);
     };
 
+    const handleAddToCart = () => {
+        if (product) {
+            addToCart(product, quantity);
+        }
+    };
+
     if (!product) {
-        return <div className="item-main"><div className="container"><h1>Product not found</h1></div></div>; // Or a loading spinner
+        return <div className="item-main"><div className="container"><h1>Product not found</h1></div></div>;
     }
 
     return (
@@ -117,7 +127,7 @@ const Item = () => {
                         <div className="item-thumbnails">
                             {product.thumbnails.map((thumb, index) => (
                                 <div 
-                                    key={index} 
+                                    key={index}
                                     className={`thumbnail-item ${mainImage === thumb ? 'active' : ''}`}
                                     onClick={() => setMainImage(thumb)}
                                 >
@@ -132,7 +142,7 @@ const Item = () => {
                     </div>
                     <div className="item-info">
                         <h1 className="item-title">{product.title}</h1>
-                        <p className="item-description">{product.description}</p>
+                        <p className="item-description">Фен Dyson Supersonic HD07 — это инновационный фен, который обеспечивает мощный поток воздуха и точный контроль температуры для бережной сушки волос.</p>
                         <div className="item-availability">
                             <span className="dot"></span>
                             <span className="availability-text">В наличии</span>
@@ -164,7 +174,10 @@ const Item = () => {
                                     +
                                 </button>
                             </div>
-                            <button className="add-to-cart-btn">
+                            <button 
+                                className="add-to-cart-btn"
+                                onClick={handleAddToCart}
+                            >
                                 В корзину <img src={cartIcon} alt="Cart" />
                             </button>
                         </div>

@@ -18,6 +18,9 @@
     width: 100%;
     height: 90px;
     min-height: 90px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .container {
@@ -101,10 +104,28 @@
 }
 
 .cart-link {
-    padding: 6px;
+    position: relative;
+    display: inline-block;
 }
 
 .cart-link img {
     min-width: 36px;
     width: 36px;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #C5358C;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
 }

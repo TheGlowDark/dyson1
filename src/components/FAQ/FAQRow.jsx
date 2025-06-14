@@ -10,8 +10,8 @@ const FAQRow = ({ question, answer }) => {
   };
 
   return (
-    <div className="faq-row">
-      <div className="faq-question" onClick={toggleOpen}>
+    <div className="faq-row" onClick={toggleOpen}>
+      <div className="faq-question">
         <p>{question}</p>
         <img 
           src={isOpen ? openedContentIcon : openContentIcon} 

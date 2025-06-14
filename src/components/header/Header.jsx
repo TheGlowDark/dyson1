@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useCart } from '../../context/CartContext';
 import "./header.css";
 
 import logoImg from './../../images/logo.png';
@@ -7,9 +9,15 @@ import cart from './../../images/icons/cart.png';
 
 function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { getCartCount } = useCart();
+    const cartCount = getCartCount();
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
+    };
+
+    const formatCartCount = (count) => {
+        return count > 99 ? '99+' : count;
     };
 
     return (
@@ -20,23 +28,26 @@ function Header() {
                         <button className="burger hover-opacity" onClick={toggleMenu}>
                             <img src={burger} alt="Menu"/>
                         </button>
-                        <a href="/" className="header_logo hover-opacity">
+                        <Link to="/" className="header_logo hover-opacity">
                             <img src={logoImg} alt="Logo"/>
-                        </a>
+                        </Link>
                     </div>
                     <nav className={`header_nav ${isMenuOpen ? 'open' : ''}`}>
                         <ul>
-                            <li><a href="!!!" className="hover-opacity">О нас</a></li>
-                            <li><a href="!!!" className="hover-opacity">Доставка и оплата</a></li>
-                            <li><a href="!!!" className="hover-opacity">Регистрация продукта</a></li>
-                            <li><a href="!!!" className="hover-opacity">Сервис</a></li>
-                            <li><a href="!!!" className="hover-opacity">Сертификаты и лицензии</a></li>
+                            <li><Link to="/about" className="hover-opacity">О нас</Link></li>
+                            <li><Link to="/delivery" className="hover-opacity">Доставка и оплата</Link></li>
+                            <li><Link to="/register" className="hover-opacity">Регистрация продукта</Link></li>
+                            <li><Link to="/service" className="hover-opacity">Сервис</Link></li>
+                            <li><Link to="/certificates" className="hover-opacity">Сертификаты и лицензии</Link></li>
                         </ul>
                     </nav>
                     <div className="header_right">
-                        <a href="/cart" className="cart-link hover-opacity">
+                        <Link to="/cart" className="cart-link hover-opacity">
                             <img src={cart} alt="Cart"/>
-                        </a>
+                            {cartCount > 0 && (
+                                <span className="cart-count">{formatCartCount(cartCount)}</span>
+                            )}
+                        </Link>
                     </div>
                 </div>
             </div>
