@@ -1,0 +1,158 @@
+.review-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.review-modal-content {
+    background-color: #fff;
+    padding: 40px 60px;
+    border-radius: 8px;
+    position: relative;
+    width: 680px;
+    max-width: 90%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.review-modal-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.review-modal-close-btn img {
+    width: 24px;
+    height: 24px;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.review-modal-close-btn:hover img {
+    opacity: 1;
+}
+
+.review-modal-title {
+    font-family: 'NAMU', sans-serif;
+    font-size: 30px;
+    font-weight: 500;
+    color: #111;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.review-rating-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.review-rating-label {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.review-stars-interactive {
+    display: flex;
+    gap: 8px;
+}
+
+.review-star-icon {
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.review-star-icon:hover {
+    transform: scale(1.1);
+}
+
+.review-form-group {
+    margin-bottom: 10px;
+}
+
+.review-input,
+.review-textarea {
+    width: 100%;
+    padding: 15px 20px;
+    border: 1px solid #E5E5E5;
+    border-radius: 4px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    color: #333;
+    box-sizing: border-box;
+}
+
+.review-textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.review-input::placeholder,
+.review-textarea::placeholder {
+    color: #ABABAB;
+}
+
+.review-photo-upload-section {
+    border: 1px dashed #E5E5E5;
+    border-radius: 4px;
+    padding: 30px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.review-photo-upload-link {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #C5358C;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.review-photo-upload-link:hover {
+    text-decoration: underline;
+}
+
+.review-photo-upload-hint {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: #666;
+}
+
+.review-submit-btn {
+    background-color: #111;
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    align-self: flex-start;
+    min-width: 220px;
+}
+
+.review-submit-btn:hover {
+    background-color: #333;
+} 

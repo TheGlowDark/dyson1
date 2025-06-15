@@ -1,5 +1,10 @@
+import React, { useState } from 'react';
 import './reviews.css';
 import arrowCategory from '../../images/icons/arrow_category.svg';
+import starIcon from '../../images/icons/star.svg';
+import ToggleExpandButton from '../show_more/ToggleExpandButton';
+import ReviewWindow from '../review_window/ReviewWindow.jsx';
+import reviewImage1 from '../../images/reviews_images/review1.png';
 
 const reviews = [
   {
@@ -10,9 +15,9 @@ const reviews = [
     title: 'Это лучший фен!',
     text: 'Пользуюсь около месяца, хочу поделиться впечатлениями. Во-первых, фен очень легкий, удобно лежит в руке, не скользит. Кнопка включения и выключения расположена удобно, а не где-то сбоку. Мощность у фена хорошая, волосы сушит быстро',
     photos: [
-      '/images/reviews/review1.jpg',
-      '/images/reviews/review2.jpg',
-      '/images/reviews/review3.jpg'
+      reviewImage1,
+      reviewImage1,
+      reviewImage1
     ]
   },
   {
@@ -31,57 +36,98 @@ const reviews = [
     rating: 5,
     title: 'Быстро пришел',
     text: 'Фен очень понравился. Качественный, стильный: свою цену полностью оправдывает!',
-    photos: ['/images/reviews/review1.jpg']
+    photos: [reviewImage1, reviewImage1]
   }
 ];
 
 const Reviews = () => {
+  const [visibleReviews, setVisibleReviews] = useState(2);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleShowMore = () => {
+    if (isExpanded) {
+      setVisibleReviews(2);
+    } else {
+      setVisibleReviews(reviews.length);
+    }
+    setIsExpanded(!isExpanded);
+  };
+
+  const renderStars = (rating) => {
+    return Array(5).fill(0).map((_, index) => (
+      <img 
+        key={index}
+        src={starIcon} 
+        alt="star" 
+        className={`star-icon ${index < rating ? 'active' : 'inactive'}`}
+      />
+    ));
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <section className="reviews-section">
       <div className="container">
         <div className='reviews-content'>
-        <div className="reviews-header">
-          <h2 className="reviews-title">Отзывы <span className="reviews-title__count">{reviews.length}</span></h2>
-          <div className="reviews-header__row">
-            <div className="reviews-rating-block">
-              <span className="reviews-rating-value">5</span>
-              <span className="reviews-rating-max">/ 5</span>
-              <span className="reviews-stars">★★★★★</span>
-            </div>
-            <button className="reviews-write-btn">Написать отзыв</button>
-          </div>
-        </div>
-        <div className="reviews-list">
-          {reviews.map(r => (
-            <div className="review-item" key={r.id}>
-              <div className="review-item__row">
-                <span className="review-item__name">{r.name}</span>
-                <span className="review-item__date">{r.date}</span>
-              </div>
-              <div className="review-item__row">
-                <span className="review-item__stars">{'★'.repeat(r.rating)}</span>
-                <span className="review-item__title">{r.title}</span>
-              </div>
-              <div className="review-item__text">{r.text}</div>
-              {r.photos.length > 0 && (
-                <div className="review-item__photos">
-                  {r.photos.map((photo, idx) => (
-                    <img src={photo} alt="Фото отзыва" key={idx} className="review-photo" />
-                  ))}
-                  <a href="#" className="review-item__photos-link">Смотреть все фото</a>
+          <div className="reviews-header">
+            <h2 className="reviews-title">Отзывы <span className="reviews-title__count">{reviews.length}</span></h2>
+            <div className="reviews-header__row">
+              <div className="reviews-rating-block">
+                <span className="reviews-rating-value">5</span>
+                <span className="reviews-rating-max">/ 5</span>
+                <div className="reviews-stars">
+                  {renderStars(5)}
                 </div>
-              )}
+              </div>
+              <button className="reviews-write-btn" onClick={openModal}>Написать отзыв</button>
             </div>
-          ))}
-        </div>
-        <div className="reviews-footer">
-          <button className="reviews-more-btn">
-            Показать еще
-            <img src={arrowCategory} alt="arrow" className="reviews-more-arrow" />
-          </button>
-        </div>
+          </div>
+          <div className="reviews-list">
+            {reviews.slice(0, visibleReviews).map(review => (
+              <div className="review-item" key={review.id}>
+                <div className="review-item__left-panel">
+                  <div className="review-item__name-rating-group">
+                    <span className="review-item__name">{review.name}</span>
+                    <div className="review-item__stars review-item__stars--top">
+                      {renderStars(review.rating)}
+                    </div>
+                  </div>
+                </div>
+                <div className="review-item__main-content">
+                  <span className="review-item__title">{review.title}</span>
+                  <div className="review-item__text">{review.text}</div>
+                  {review.photos.length > 0 && (
+                    <div className="review-item__photos">
+                      {review.photos.map((photo, idx) => (
+                        <img src={photo} alt="Фото отзыва" key={idx} className="review-photo" />
+                      ))}
+                      <a href="#" className="review-item__photos-link">Смотреть все фото</a>
+                    </div>
+                  )}
+                </div>
+                <span className="review-item__date">{review.date}</span>
+              </div>
+            ))}
+          </div>
+          {reviews.length > 2 && (
+            <div className="reviews-footer">
+              <ToggleExpandButton
+                onClick={handleShowMore}
+                isExpanded={isExpanded}
+              />
+            </div>
+          )}
         </div>
       </div>
+      <ReviewWindow isOpen={isModalOpen} onClose={closeModal} />
     </section>
   );
 };
