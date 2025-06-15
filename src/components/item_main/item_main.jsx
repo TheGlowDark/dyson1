@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import './item_main.css';
@@ -68,6 +68,9 @@ const Item = () => {
     const [product, setProduct] = useState(null);
     const [mainImage, setMainImage] = useState(null);
     const [currentThumbIndex, setCurrentThumbIndex] = useState(0);
+    const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
+    const [isDescriptionOverflow, setIsDescriptionOverflow] = useState(false);
+    const descriptionRef = useRef(null);
     const { addToCart } = useCart();
     const thumbnailsPerPage = 5;
 
@@ -79,7 +82,16 @@ const Item = () => {
         } else {
             setProduct(null);
         }
+        // Scroll to top when component mounts
+        window.scrollTo(0, 0);
     }, [id]);
+
+    useEffect(() => {
+        if (descriptionRef.current) {
+            const element = descriptionRef.current;
+            setIsDescriptionOverflow(element.scrollHeight > element.clientHeight);
+        }
+    }, [product]);
 
     const handlePrevThumbs = () => {
         setCurrentThumbIndex(prev => 
@@ -97,6 +109,9 @@ const Item = () => {
         currentThumbIndex,
         currentThumbIndex + thumbnailsPerPage
     ) || [];
+
+    const showPrevButton = currentThumbIndex > 0;
+    const showNextButton = currentThumbIndex + thumbnailsPerPage < (product?.thumbnails.length || 0);
 
     const handleDecrement = () => {
         if (quantity > 1) {
@@ -127,6 +142,10 @@ const Item = () => {
         }
     };
 
+    const toggleDescription = () => {
+        setIsDescriptionExpanded(!isDescriptionExpanded);
+    };
+
     if (!product) {
         return <div className="item-main"><div className="container"><h1>Product not found</h1></div></div>;
     }
@@ -144,14 +163,15 @@ const Item = () => {
                 <div className="item-content">
                     <div className="item-gallery">
                         <div className="item-thumbnails">
-                            <button 
-                                className="thumb-nav-btn prev-btn"
-                                onClick={handlePrevThumbs}
-                                disabled={!product || product.thumbnails.length <= thumbnailsPerPage}
-                            >
-                                <img src={arrowIcon} alt="Previous" className="arrow-up" />
-                            </button>
-                            <div className="thumbnails-container">
+                            {showPrevButton && (
+                                <button 
+                                    className="thumb-nav-btn prev-btn"
+                                    onClick={handlePrevThumbs}
+                                >
+                                    <img src={arrowIcon} alt="Previous" className="arrow-up" />
+                                </button>
+                            )}
+                            <div className={`thumbnails-container ${showPrevButton ? 'has-prev' : ''} ${showNextButton ? 'has-next' : ''}`}>
                                 {visibleThumbnails.map((thumb, index) => (
                                     <div 
                                         key={currentThumbIndex + index}
@@ -162,13 +182,14 @@ const Item = () => {
                                     </div>
                                 ))}
                             </div>
-                            <button 
-                                className="thumb-nav-btn next-btn"
-                                onClick={handleNextThumbs}
-                                disabled={!product || product.thumbnails.length <= thumbnailsPerPage}
-                            >
-                                <img src={arrowIcon} alt="Next" className="arrow-down" />
-                            </button>
+                            {showNextButton && (
+                                <button 
+                                    className="thumb-nav-btn next-btn"
+                                    onClick={handleNextThumbs}
+                                >
+                                    <img src={arrowIcon} alt="Next" className="arrow-down" />
+                                </button>
+                            )}
                         </div>
                         <div className="item-main-image">
                             <img src={mainImage} alt={product.title} />
@@ -177,7 +198,13 @@ const Item = () => {
                     </div>
                     <div className="item-info">
                         <h1 className="item-title">{product.title}</h1>
-                        <p className="item-description">Фен Dyson Supersonic HD07 — это инновационный фен, который обеспечивает мощный поток воздуха и точный контроль температуры для бережной сушки волос.</p>
+                        <div 
+                            ref={descriptionRef}
+                            className={`item-description ${isDescriptionExpanded ? 'expanded' : ''}`}
+                            onClick={isDescriptionOverflow ? toggleDescription : undefined}
+                        >
+                            Фен Dyson Supersonic HD07 — это инновационный фен, который обеспечивает мощный поток воздуха и точный контроль температуры для бережной сушки волос. Благодаря интеллектуальной системе контроля температуры, фен автоматически регулирует температуру воздуха, чтобы защитить волосы от теплового повреждения. Технология Air Multiplier создает мощный, концентрированный поток воздуха, который быстро и эффективно сушит волосы, сохраняя при этом их естественную красоту и здоровье.
+                        </div>
                         <div className="item-availability">
                             <span className="dot"></span>
                             <span className="availability-text">В наличии</span>

@@ -1,18 +1,27 @@
 import React from 'react';
+import certificate1 from '../../../images/certificates/Certificate1.png';
+import certificate2 from '../../../images/certificates/Certificate2.png';
+import certificate3 from '../../../images/certificates/Certificate3.png';
+import certificate4 from '../../../images/certificates/Certificate4.png';
 
 const CertificatesContent = () => {
-    // Placeholder images - replace with actual paths if available
     const certificateImages = [
-        'https://via.placeholder.com/200x280?text=Certificate+1',
-        'https://via.placeholder.com/200x280?text=Certificate+2',
-        'https://via.placeholder.com/200x280?text=Certificate+3',
+        certificate1,
+        certificate2,
+        certificate3,
+        certificate4
     ];
 
     return (
         <div className="tab-content certificates-content">
             <div className="certificates-grid">
                 {certificateImages.map((image, index) => (
-                    <img key={index} src={image} alt={`Certificate ${index + 1}`} className="certificate-image" />
+                    <img 
+                        key={index} 
+                        src={image} 
+                        alt={`Сертификат ${index + 1}`} 
+                        className="certificate-image" 
+                    />
                 ))}
             </div>
         </div>

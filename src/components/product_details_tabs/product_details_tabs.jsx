@@ -32,8 +32,8 @@ const ProductDetailsTabs = () => {
     };
 
     return (
-        <div className="container">
-            <div className="product-details-tabs">
+        <div className="product-details-tabs">
+            <div className="container">
                 <div className="tabs-header">
                     {tabs.map(tab => (
                         <div
