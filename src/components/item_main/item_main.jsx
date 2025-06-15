@@ -31,7 +31,7 @@ const allProducts = [
         deliveryDate: "2024-02-15",
         rating: 4.8,
         orderCount: 256,
-        thumbnails: [dysonHd07Blue, img1, img2, img3, img4] 
+        thumbnails: [dysonHd07Blue, img1, img2, img3, img4, img5] 
     },
     {
         id: 2,
@@ -44,7 +44,7 @@ const allProducts = [
         deliveryDate: "2024-03-01",
         rating: 4.9,
         orderCount: 189,
-        thumbnails: [dysonHd07Stand, img1, img2, img3, img4]
+        thumbnails: [dysonHd07Stand, img1, img2, img3, img4, img5]
     },
     {
         id: 3,
@@ -57,7 +57,7 @@ const allProducts = [
         deliveryDate: "2024-03-10",
         rating: 4.7,
         orderCount: 142,
-        thumbnails: [dyson4Purple, img1, img2, img3, img4]
+        thumbnails: [dyson4Purple, img1, img2, img3, img4, img5]
     }
     // Add other products as needed, mirroring the structure in ProductGrid
 ];
@@ -67,7 +67,9 @@ const Item = () => {
     const [quantity, setQuantity] = useState(1);
     const [product, setProduct] = useState(null);
     const [mainImage, setMainImage] = useState(null);
+    const [currentThumbIndex, setCurrentThumbIndex] = useState(0);
     const { addToCart } = useCart();
+    const thumbnailsPerPage = 5;
 
     useEffect(() => {
         const foundProduct = allProducts.find(p => p.id === parseInt(id));
@@ -78,6 +80,23 @@ const Item = () => {
             setProduct(null);
         }
     }, [id]);
+
+    const handlePrevThumbs = () => {
+        setCurrentThumbIndex(prev => 
+            prev === 0 ? product.thumbnails.length - thumbnailsPerPage : prev - 1
+        );
+    };
+
+    const handleNextThumbs = () => {
+        setCurrentThumbIndex(prev => 
+            prev + thumbnailsPerPage >= product.thumbnails.length ? 0 : prev + 1
+        );
+    };
+
+    const visibleThumbnails = product?.thumbnails.slice(
+        currentThumbIndex,
+        currentThumbIndex + thumbnailsPerPage
+    ) || [];
 
     const handleDecrement = () => {
         if (quantity > 1) {
@@ -125,15 +144,31 @@ const Item = () => {
                 <div className="item-content">
                     <div className="item-gallery">
                         <div className="item-thumbnails">
-                            {product.thumbnails.map((thumb, index) => (
-                                <div 
-                                    key={index}
-                                    className={`thumbnail-item ${mainImage === thumb ? 'active' : ''}`}
-                                    onClick={() => setMainImage(thumb)}
-                                >
-                                    <img src={thumb} alt={`Thumbnail ${index + 1}`} />
-                                </div>
-                            ))}
+                            <button 
+                                className="thumb-nav-btn prev-btn"
+                                onClick={handlePrevThumbs}
+                                disabled={!product || product.thumbnails.length <= thumbnailsPerPage}
+                            >
+                                <img src={arrowIcon} alt="Previous" className="arrow-up" />
+                            </button>
+                            <div className="thumbnails-container">
+                                {visibleThumbnails.map((thumb, index) => (
+                                    <div 
+                                        key={currentThumbIndex + index}
+                                        className={`thumbnail-item ${mainImage === thumb ? 'active' : ''}`}
+                                        onClick={() => setMainImage(thumb)}
+                                    >
+                                        <img src={thumb} alt={`Thumbnail ${currentThumbIndex + index + 1}`} />
+                                    </div>
+                                ))}
+                            </div>
+                            <button 
+                                className="thumb-nav-btn next-btn"
+                                onClick={handleNextThumbs}
+                                disabled={!product || product.thumbnails.length <= thumbnailsPerPage}
+                            >
+                                <img src={arrowIcon} alt="Next" className="arrow-down" />
+                            </button>
                         </div>
                         <div className="item-main-image">
                             <img src={mainImage} alt={product.title} />
