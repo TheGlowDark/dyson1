@@ -115,15 +115,16 @@
 
 .cart-count {
     position: absolute;
-    top: -8px;
-    right: -8px;
-    background: #C5358C;
-    color: white;
+    top: 15px;
+    right: -20px;
+    background: #FFFFFF;
+    color: #111111;
     font-size: 14px;
-    font-weight: 600;
+    font-family: "Open Sans";
+    font-weight: 700;
     min-width: 20px;
     height: 20px;
-    border-radius: 10px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;

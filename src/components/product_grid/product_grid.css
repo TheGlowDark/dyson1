@@ -104,7 +104,7 @@
 .pagination {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 30px;
     padding-top: 20px;
 }
 
@@ -134,6 +134,15 @@
     opacity: 0.5;
     cursor: not-allowed;
 
+}
+
+.pagination__arrows {
+    display: flex;
+    gap: 20px; /* Расстояние между стрелками изменено на 20px */
+}
+
+.pagination__numbers {
+    /* Дополнительные стили для блока номеров, если нужны */
 }
 
 .pagination__info {

@@ -217,21 +217,25 @@ const ProductGrid = ({ onProductCountChange }) => {
 
             {totalPages > 1 && (
                 <div className="pagination">
-                    <button 
-                        className="pagination__btn" 
-                        onClick={handlePrevPage}
-                        disabled={currentPage === 1}
-                    >
-                        <img src={arrowCategory} alt="Назад" />
-                    </button>
-                    <button 
-                        className="pagination__btn" 
-                        onClick={handleNextPage}
-                        disabled={currentPage === totalPages}
-                    >
-                        <img src={arrowCategory} alt="Вперед" style={{transform: 'rotate(180deg)'}} />
-                    </button>
-                    <p className="pagination__info">{currentPage} из {totalPages}</p>
+                    <div className="pagination__arrows">
+                        <button 
+                            className="pagination__btn" 
+                            onClick={handlePrevPage}
+                            disabled={currentPage === 1}
+                        >
+                            <img src={arrowCategory} alt="Назад" />
+                        </button>
+                        <button 
+                            className="pagination__btn" 
+                            onClick={handleNextPage}
+                            disabled={currentPage === totalPages}
+                        >
+                            <img src={arrowCategory} alt="Вперед" style={{transform: 'rotate(180deg)'}} />
+                        </button>
+                    </div>
+                    <div className="pagination__numbers">
+                        <p className="pagination__info">{currentPage} из {totalPages}</p>
+                    </div>
                 </div>
             )}
         </div>
