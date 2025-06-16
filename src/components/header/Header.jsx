@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import "./header.css";
+import { CSSTransition } from 'react-transition-group';
 
 import logoImg from './../../images/logo.png';
 import burger from './../../images/icons/burger.png';
@@ -11,6 +12,7 @@ function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { getCartCount } = useCart();
     const cartCount = getCartCount();
+    const navRef = useRef(null);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -32,15 +34,23 @@ function Header() {
                             <img src={logoImg} alt="Logo"/>
                         </Link>
                     </div>
-                    <nav className={`header_nav ${isMenuOpen ? 'open' : ''}`}>
-                        <ul>
-                            <li><Link to="/about" className="hover-opacity">О нас</Link></li>
-                            <li><Link to="/delivery" className="hover-opacity">Доставка и оплата</Link></li>
-                            <li><Link to="/register" className="hover-opacity">Регистрация продукта</Link></li>
-                            <li><Link to="/service" className="hover-opacity">Сервис</Link></li>
-                            <li><Link to="/certificates" className="hover-opacity">Сертификаты и лицензии</Link></li>
-                        </ul>
-                    </nav>
+                    <CSSTransition
+                        in={isMenuOpen}
+                        timeout={300}
+                        classNames="header_nav-anim"
+                        unmountOnExit
+                        nodeRef={navRef}
+                    >
+                        <nav className="header_nav" ref={navRef}>
+                            <ul>
+                                <li><Link to="/about" className="hover-opacity">О нас</Link></li>
+                                <li><Link to="/delivery" className="hover-opacity">Доставка и оплата</Link></li>
+                                <li><Link to="/register" className="hover-opacity">Регистрация продукта</Link></li>
+                                <li><Link to="/service" className="hover-opacity">Сервис</Link></li>
+                                <li><Link to="/certificates" className="hover-opacity">Сертификаты и лицензии</Link></li>
+                            </ul>
+                        </nav>
+                    </CSSTransition>
                     <div className="header_right">
                         <Link to="/cart" className="cart-link hover-opacity">
                             <img src={cart} alt="Cart"/>
