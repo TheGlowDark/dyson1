@@ -63,3 +63,50 @@
 .btn__wrapper a:hover {
     opacity: 0.7;
 }
+
+@media (max-width: 1200px) {
+  .promo__content {
+    align-items: stretch;
+    height: 389px;
+    column-gap: 32px;
+    position: relative;
+  }
+  .promo__text {
+    padding-top: 80px;
+    max-width: 389px;
+  }
+  .promo__title {
+    font-size: 30px;
+    margin-bottom: 0;
+  }
+  .promo__description {
+    font-size: 12px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    max-width: 253px;
+  }
+  .btn__wrapper a {
+    width: 141px;
+    height: 36px;
+    line-height: 36px;
+    font-size: 16px;
+  }
+  .promo__img {
+    width: 374px;
+    height: 100%;
+    max-width: 374px;
+    max-height: 389px;
+    min-width: 0;
+    min-height: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    align-self: stretch;
+  }
+  .promo__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+}

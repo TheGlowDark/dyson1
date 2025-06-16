@@ -61,3 +61,34 @@
     margin-top: 50px;
     max-height: 500px; /* Adjust as needed based on content */
 }
+
+@media (max-width: 1200px) {
+  .faq-content {
+    padding-top: 60px;
+    padding-bottom: 76px;
+  }
+  .faq-title {
+    margin-bottom: 40px;
+  }
+  .faq-toggle {
+    width: 30px;
+    height: 30px;
+  }
+  .faq-row {
+    padding: 20px 0;
+  }
+  .faq-row + .faq-answer.open {
+    margin-top: 30px;
+  }
+  .faq-answer {
+    font-size: 16px;
+  }
+  .faq-answer.open {
+    margin-top: 30px;
+  }
+  .faq-row p {
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
