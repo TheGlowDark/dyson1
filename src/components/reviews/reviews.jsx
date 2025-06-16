@@ -5,8 +5,9 @@ import starIcon from '../../images/icons/star.svg';
 import ToggleExpandButton from '../show_more/ToggleExpandButton';
 import ReviewWindow from '../review_window/ReviewWindow.jsx';
 import reviewImage1 from '../../images/reviews_images/review1.png';
+import PhotoWindow from '../photo_window/PhotoWindow.jsx';
 
-const reviews = [
+const initialReviews = [
   {
     id: 1,
     name: 'Ольга',
@@ -41,9 +42,14 @@ const reviews = [
 ];
 
 const Reviews = () => {
+  const [reviews, setReviews] = useState(initialReviews);
   const [visibleReviews, setVisibleReviews] = useState(2);
   const [isExpanded, setIsExpanded] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPhotoModalOpen, setIsPhotoModalOpen] = useState(false);
+  const [photosForModal, setPhotosForModal] = useState([]);
+  const [initialPhotoIndex, setInitialPhotoIndex] = useState(0);
+  const [reviewForModal, setReviewForModal] = useState(null);
 
   const handleShowMore = () => {
     if (isExpanded) {
@@ -71,6 +77,27 @@ const Reviews = () => {
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  const openPhotoModal = (review, index) => {
+    setReviewForModal(review);
+    setPhotosForModal(review.photos);
+    setInitialPhotoIndex(index);
+    setIsPhotoModalOpen(true);
+  };
+
+  const closePhotoModal = () => {
+    setIsPhotoModalOpen(false);
+    setPhotosForModal([]);
+    setInitialPhotoIndex(0);
+    setReviewForModal(null);
+  };
+
+  const addReview = (newReview) => {
+    setReviews(prevReviews => [newReview, ...prevReviews]);
+    if (!isExpanded && visibleReviews === 2) {
+        setVisibleReviews(prev => prev + 1);
+    }
   };
 
   return (
@@ -107,9 +134,24 @@ const Reviews = () => {
                   {review.photos.length > 0 && (
                     <div className="review-item__photos">
                       {review.photos.map((photo, idx) => (
-                        <img src={photo} alt="Фото отзыва" key={idx} className="review-photo" />
+                        <img
+                          src={photo}
+                          alt="Фото отзыва"
+                          key={idx}
+                          className="review-photo"
+                          onClick={() => openPhotoModal(review, idx)}
+                        />
                       ))}
-                      <a href="#" className="review-item__photos-link">Смотреть все фото</a>
+                      <a
+                        href="#"
+                        className="review-item__photos-link"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          openPhotoModal(review, 0);
+                        }}
+                      >
+                        Смотреть все фото
+                      </a>
                     </div>
                   )}
                 </div>
@@ -127,7 +169,14 @@ const Reviews = () => {
           )}
         </div>
       </div>
-      <ReviewWindow isOpen={isModalOpen} onClose={closeModal} />
+      <ReviewWindow isOpen={isModalOpen} onClose={closeModal} addReview={addReview} />
+      <PhotoWindow
+        isOpen={isPhotoModalOpen}
+        onClose={closePhotoModal}
+        images={photosForModal}
+        initialIndex={initialPhotoIndex}
+        review={reviewForModal}
+      />
     </section>
   );
 };

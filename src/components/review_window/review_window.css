@@ -13,10 +13,11 @@
 
 .review-modal-content {
     background-color: #fff;
-    padding: 40px 60px;
+    padding: 70px 80px;
     border-radius: 8px;
     position: relative;
-    width: 680px;
+    width: 750px;
+    height: 850px;
     max-width: 90%;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     display: flex;
@@ -32,6 +33,12 @@
     border: none;
     cursor: pointer;
     padding: 0;
+    width: 55px;
+    height: 55px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .review-modal-close-btn img {
@@ -45,11 +52,16 @@
     opacity: 1;
 }
 
+.review-modal-close-btn:hover {
+    /* background-color: #f0f0f0; Удалил фон при наведении */
+}
+
 .review-modal-title {
     font-family: 'NAMU', sans-serif;
     font-size: 30px;
-    font-weight: 500;
+    font-weight: 900;
     color: #111;
+    line-height: 140%;
     margin-bottom: 20px;
     text-align: left;
 }
@@ -63,8 +75,9 @@
 
 .review-rating-label {
     font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
-    color: #333;
+    font-size: 18px;
+    font-weight: 400;
+    color: #ABABAB;
     margin-bottom: 10px;
 }
 
@@ -102,6 +115,7 @@
 
 .review-textarea {
     min-height: 120px;
+    max-height: 200px;
     resize: vertical;
 }
 
@@ -121,8 +135,8 @@
 
 .review-photo-upload-link {
     font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
+    font-weight: 400;
+    font-size: 18px;
     color: #C5358C;
     cursor: pointer;
     margin-bottom: 5px;
@@ -134,8 +148,19 @@
 
 .review-photo-upload-hint {
     font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
-    color: #666;
+    font-size: 18px;
+    font-weight: 400;
+    color: #ABABAB;
+    line-height: 120%;
+}
+
+.review-preview-image {
+    max-width: 100%;
+    max-height: 150px; /* Ограничиваем высоту для предпросмотра */
+    object-fit: contain;
+    margin-top: 10px;
+    border-radius: 4px;
+    border: 1px solid #E5E5E5;
 }
 
 .review-submit-btn {
@@ -151,8 +176,19 @@
     transition: background-color 0.2s ease;
     align-self: flex-start;
     min-width: 220px;
+    margin-top: auto;
 }
 
 .review-submit-btn:hover {
     background-color: #333;
+}
+
+.review-error-message {
+    color: #FF0000;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.input-error {
+    border-color: #FF0000; /* Красная рамка для полей с ошибками */
 } 
