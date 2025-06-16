@@ -6,10 +6,40 @@
 }
 
 .container{
-    max-width: 1920px; /* ширина контейнера(отступы слева и справа 280px + padding 30px) */
+    max-width: 1920px;
     margin: 0 auto;
-    padding: 0 280px; 
+    padding: 0 280px;
     height: 100%;
+    box-sizing: border-box;
+}
+
+@media (max-width: 1600px) {
+  .container {
+    max-width: 1400px;
+    padding-left: 120px;
+    padding-right: 120px;
+  }
+}
+@media (max-width: 1200px) {
+  .container {
+    max-width: 1000px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+@media (max-width: 1024px) {
+  .container {
+    max-width: 900px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
 }
 
 .promo_container{
