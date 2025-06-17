@@ -193,3 +193,84 @@
     font-size: 14px;
   }
 } 
+
+@media (max-width: 768px) {
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 24px;
+      margin-bottom: 16px;
+    }
+  
+    .footer-left-section,
+    .footer-right-section {
+      width: 100%;
+      max-width: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .footer-left-section {
+        display: flex;
+        flex-direction: row;
+        gap: 100px; /* или нужный вам отступ между колонками */
+        width: 100%;
+        align-items: flex-start;
+        justify-content: flex-start;
+      }
+      .footer-column-footer-info {
+        flex: 1 1 0;
+        min-width: 0;
+      }
+    .footer-right-section {
+      order: 2;
+    }
+  
+    .footer-logo {
+      width: 110px;
+      height: 46px;
+      margin-bottom: 12px;
+    }
+  
+    .footer-social-icons {
+      gap: 12px;
+      margin: 12px 0 0 0;
+    }
+  
+    .footer-column-title {
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+    .footer-right-columns{
+        gap: 100px;
+
+    }
+    .footer-links,
+    .footer-contact-info {
+      font-size: 13px;
+      margin: 0;
+      padding: 0;
+    }
+  
+    .footer-links li {
+      margin-bottom: 6px;
+    }
+  
+    .footer-contact .footer-phone {
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+    .footer-top{
+        margin-bottom: 10px;
+    }
+
+    .footer-copyright {
+      font-size: 11px;
+      color: #aaa;
+      margin-top: 0px;
+      text-align: left;
+      width: 100%;
+    }
+  }
