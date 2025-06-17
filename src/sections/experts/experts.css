@@ -26,10 +26,10 @@
 
 .experts__text {
     font-size: 18px;
-    line-height: 1.4;
 }
 
 .experts__text p {
+    line-height: 1.4;
     margin-bottom: 20px;
 }
 

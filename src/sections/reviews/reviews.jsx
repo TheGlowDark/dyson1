@@ -172,16 +172,13 @@ const Reviews = () => {
                           />
                         ))}
                       </div>
-                      <a
-                        href="#"
+                      <button
+                        type="button"
                         className="review-item__photos-link"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          openPhotoModal(review, 0);
-                        }}
+                        onClick={() => openPhotoModal(review, 0)}
                       >
                         Смотреть все фото
-                      </a>
+                      </button>
                     </>
                   )}
                 </div>

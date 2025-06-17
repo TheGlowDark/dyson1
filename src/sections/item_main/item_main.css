@@ -7,7 +7,6 @@
 }
 
 .breadcrumbs {
-    display: flex;
     align-items: center;
     gap: 8px;
     margin-bottom: 40px;
@@ -15,7 +14,7 @@
 }
 
 .breadcrumb-link {
-    color: #666;
+    color: #ABABAB;
     text-decoration: none;
 }
 
@@ -198,6 +197,12 @@
         max-width: 440px;
         height: auto;
         aspect-ratio: 1/1;
+    }
+    .item-title{
+        font-size: 26px;
+    }
+    .item-description{
+        font-size: 16px;
     }
 }
 
