@@ -146,7 +146,7 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .sections__grid {
         grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
         gap: 10px;
