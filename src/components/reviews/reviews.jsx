@@ -50,6 +50,7 @@ const Reviews = () => {
   const [photosForModal, setPhotosForModal] = useState([]);
   const [initialPhotoIndex, setInitialPhotoIndex] = useState(0);
   const [reviewForModal, setReviewForModal] = useState(null);
+  const [selectedRating, setSelectedRating] = useState(5);
 
   const handleShowMore = () => {
     if (isExpanded) {
@@ -60,16 +61,37 @@ const Reviews = () => {
     setIsExpanded(!isExpanded);
   };
 
-  const renderStars = (rating) => {
-    return Array(5).fill(0).map((_, index) => (
-      <img 
-        key={index}
-        src={starIcon} 
-        alt="star" 
-        className={`star-icon ${index < rating ? 'active' : 'inactive'}`}
-      />
-    ));
+  const handleStarClick = (rating) => {
+    setSelectedRating(rating);
   };
+
+  const renderInteractiveStars = () => (
+    <div className="reviews-stars">
+      {Array(5).fill(0).map((_, index) => (
+        <img
+          key={index}
+          src={starIcon}
+          alt="star"
+          className={`star-icon ${index < selectedRating ? 'active' : 'inactive'}`}
+          style={{ cursor: 'pointer' }}
+          onClick={() => handleStarClick(index + 1)}
+        />
+      ))}
+    </div>
+  );
+
+  const renderStars = (rating) => (
+    <div className="reviews-stars">
+      {Array(5).fill(0).map((_, index) => (
+        <img
+          key={index}
+          src={starIcon}
+          alt="star"
+          className={`star-icon ${index < rating ? 'active' : 'inactive'}`}
+        />
+      ))}
+    </div>
+  );
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -114,13 +136,14 @@ const Reviews = () => {
           <div className="review-item-rate">
             <div className="review-item__left-panel">
               <div className="review-item__name-rating-group">
-                  <span className="review-item__name"><span className='bignum'>5</span> / 5</span>
-                    <div className="review-item__stars review-item__stars--top">{renderStars(5)}</div>
-                        
-                    </div>
+                <span className="review-item__name"><span className='bignum'>{selectedRating}</span> / 5</span>
+                <div className="review-item__stars review-item__stars--top">
+                  {renderInteractiveStars()}
+                </div>
               </div>
-                    <div className="review-item__main-content">
-                    <button className="reviews-write-btn" onClick={openModal}>Написать отзыв</button>
+            </div>
+            <div className="review-item__main-content">
+              <button className="reviews-write-btn" onClick={openModal}>Написать отзыв</button>
             </div>
           </div>
           <div className="reviews-list">
@@ -175,7 +198,12 @@ const Reviews = () => {
           )}
         </div>
       </div>
-      <ReviewWindow isOpen={isModalOpen} onClose={closeModal} addReview={addReview} />
+      <ReviewWindow
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        addReview={addReview}
+        initialRating={selectedRating}
+      />
       <PhotoWindow
         isOpen={isPhotoModalOpen}
         onClose={closePhotoModal}
