@@ -133,6 +133,11 @@
     margin-bottom: 20px;
 }
 
+.review-photo-upload-section.drag-active {
+    border: 2px solid #C5358C;
+    background-color: #f9e6f3;
+}
+
 .review-photo-upload-link {
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
@@ -168,10 +173,10 @@
     color: #fff;
     padding: 15px 30px;
     border: none;
-    border-radius: 8px;
+    border-radius: 3px;
     font-family: 'Open Sans', sans-serif;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 400;
     cursor: pointer;
     transition: background-color 0.2s ease;
     align-self: flex-start;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './photo_window.css';
 import closeIcon from '../../images/icons/close.svg';
-import arrowIcon from '../../images/icons/arrow_item_photo.svg'; // Используем ту же стрелку, что и для миниатюр
+import rightArrowIcon from '../../images/icons/photo_right.svg';
 
 const PhotoWindow = ({ isOpen, onClose, images, initialIndex, review }) => {
     const [currentIndex, setCurrentIndex] = useState(initialIndex);
@@ -34,16 +34,16 @@ const PhotoWindow = ({ isOpen, onClose, images, initialIndex, review }) => {
                     </button>
                 </div>
                 <div className="photo-display-area">
-                    <button className="photo-nav-btn photo-prev-btn" onClick={handlePrev}>
-                        <img src={arrowIcon} alt="Previous" className="arrow-icon" />
+                    <button className="photo-nav-btn photo-prev-btn" onClick={handlePrev} aria-label="Предыдущее фото">
+                        <img src={rightArrowIcon} alt="Previous" className="arrow-icon rotated" />
                     </button>
                     <img src={currentImageSrc} alt={`Image ${currentIndex + 1}`} className="photo-main-image" />
-                    <button className="photo-nav-btn photo-next-btn" onClick={handleNext}>
-                        <img src={arrowIcon} alt="Next" className="arrow-icon rotated" />
+                    <button className="photo-nav-btn photo-next-btn" onClick={handleNext} aria-label="Следующее фото">
+                        <img src={rightArrowIcon} alt="Next" className="arrow-icon" />
                     </button>
                 </div>
                 {review && (
-                    <div className="photo-review-details">
+                    <div className="photo-review-details photo-review-details-bottom">
                         <span className="photo-review-author">{review.name}</span>
                         <p className="photo-review-text">{review.text}</p>
                     </div>

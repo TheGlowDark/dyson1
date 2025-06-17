@@ -30,7 +30,6 @@
     grid-auto-rows: minmax(814px, auto);
     gap: clamp(10px, 2vw, 20px);
     width: 100%;
-    max-width: 1200px;
     box-sizing: border-box;
 }
 

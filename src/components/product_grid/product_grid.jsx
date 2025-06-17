@@ -212,9 +212,13 @@ const ProductGrid = ({ onProductCountChange }) => {
             </div>
             
             <div className="product-grid">
-                {renderProductRows()}
+                {getCurrentPageProducts().map(product => (
+                    <ProductCard
+                        key={product.id}
+                        {...product}
+                    />
+                ))}
             </div>
-
             {totalPages > 1 && (
                 <div className="pagination">
                     <div className="pagination__arrows">

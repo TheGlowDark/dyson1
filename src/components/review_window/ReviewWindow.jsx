@@ -6,16 +6,18 @@ import closeIcon from '../../images/icons/close.svg';
 
 const ReviewWindow = ({ isOpen, onClose, addReview, initialRating = 0 }) => {
     const [rating, setRating] = useState(initialRating);
-    const [selectedImage, setSelectedImage] = useState(null);
+    const [selectedImages, setSelectedImages] = useState([]);
     const fileInputRef = useRef(null);
     const [name, setName] = useState('');
     const [comment, setComment] = useState('');
     const [errors, setErrors] = useState({});
+    const [isDragActive, setIsDragActive] = useState(false);
 
     // Reset form when modal opens with new initialRating
     React.useEffect(() => {
         if (isOpen) {
             setRating(initialRating);
+            setSelectedImages([]);
         }
     }, [isOpen, initialRating]);
 
@@ -40,22 +42,68 @@ const ReviewWindow = ({ isOpen, onClose, addReview, initialRating = 0 }) => {
     };
 
     const handleFileChange = (event) => {
-        const file = event.target.files[0];
-        if (file && file.type.startsWith('image/')) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setSelectedImage(reader.result);
-            };
-            reader.readAsDataURL(file);
-        } else {
-            setSelectedImage(null);
-        }
+        const files = Array.from(event.target.files);
+        const imagePromises = files.map(file => {
+            return new Promise((resolve, reject) => {
+                if (file && file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onloadend = () => {
+                        resolve(reader.result);
+                    };
+                    reader.onerror = reject;
+                    reader.readAsDataURL(file);
+                } else {
+                    resolve(null);
+                }
+            });
+        });
+        Promise.all(imagePromises).then(images => {
+            setSelectedImages(images.filter(Boolean));
+        });
+    };
+
+    const handleDrop = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        setIsDragActive(false);
+        const files = Array.from(event.dataTransfer.files);
+        const imagePromises = files.map(file => {
+            return new Promise((resolve, reject) => {
+                if (file && file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onloadend = () => {
+                        resolve(reader.result);
+                    };
+                    reader.onerror = reject;
+                    reader.readAsDataURL(file);
+                } else {
+                    resolve(null);
+                }
+            });
+        });
+        Promise.all(imagePromises).then(images => {
+            setSelectedImages(images.filter(Boolean));
+        });
+    };
+
+    const handleDragOver = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        setIsDragActive(true);
+    };
+
+    const handleDragLeave = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        setIsDragActive(false);
     };
 
     const validateForm = () => {
         const newErrors = {};
         if (!name.trim()) {
             newErrors.name = 'Имя не может быть пустым';
+        } else if (name.length > 10) {
+            newErrors.name = 'Имя не должно превышать 10 символов';
         }
         if (rating === 0) {
             newErrors.rating = 'Пожалуйста, поставьте оценку';
@@ -67,16 +115,27 @@ const ReviewWindow = ({ isOpen, onClose, addReview, initialRating = 0 }) => {
         return Object.keys(newErrors).length === 0;
     };
 
+    const handleNameChange = (e) => {
+        const value = e.target.value;
+        if (value.length <= 10) {
+            setName(value);
+        }
+    };
+
     const handleSubmit = () => {
         if (validateForm()) {
+            const commentLines = comment.trim().split('\n');
+            const title = commentLines[0];
+            const remainingText = commentLines.slice(1).join('\n').trim();
+
             const newReview = {
                 id: Date.now(), // Простой уникальный ID
                 name: name.trim(),
                 date: new Date().toLocaleDateString('en-GB'), // Формат даты dd/mm/yyyy
                 rating: rating,
-                title: '' ,// Заголовок можно добавить позже, если нужно
-                text: comment.trim(),
-                photos: selectedImage ? [selectedImage] : [],
+                title: title,
+                text: remainingText,
+                photos: selectedImages,
             };
             addReview(newReview);
             onClose(); // Закрыть модальное окно после успешной отправки
@@ -84,7 +143,7 @@ const ReviewWindow = ({ isOpen, onClose, addReview, initialRating = 0 }) => {
             setName('');
             setRating(0);
             setComment('');
-            setSelectedImage(null);
+            setSelectedImages([]);
             setErrors({});
         }
     };
@@ -115,7 +174,8 @@ const ReviewWindow = ({ isOpen, onClose, addReview, initialRating = 0 }) => {
                         placeholder="Ваше имя"
                         className={`review-input ${errors.name ? 'input-error' : ''}`}
                         value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        onChange={handleNameChange}
+                        maxLength={10}
                     />
                     {errors.name && <p className="review-error-message">{errors.name}</p>}
                 </div>
@@ -130,19 +190,29 @@ const ReviewWindow = ({ isOpen, onClose, addReview, initialRating = 0 }) => {
                     {errors.comment && <p className="review-error-message">{errors.comment}</p>}
                 </div>
 
-                <div className="review-photo-upload-section">
+                <div 
+                    className={`review-photo-upload-section${isDragActive ? ' drag-active' : ''}`}
+                    onDrop={handleDrop}
+                    onDragOver={handleDragOver}
+                    onDragLeave={handleDragLeave}
+                >
                     <input
                         type="file"
                         accept="image/*"
                         ref={fileInputRef}
                         onChange={handleFileChange}
                         style={{ display: 'none' }}
+                        multiple
                     />
                     <p className="review-photo-upload-link" onClick={handleImageUploadClick}>Загрузить фото</p>
-                    {selectedImage ? (
-                        <img src={selectedImage} alt="Selected" className="review-preview-image" />
+                    {selectedImages.length > 0 ? (
+                        <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                            {selectedImages.map((img, idx) => (
+                                <img key={idx} src={img} alt={`Selected ${idx+1}`} className="review-preview-image" />
+                            ))}
+                        </div>
                     ) : (
-                        <p className="review-photo-upload-hint">Нажмите кнопку "Загрузить фото" или перетащите фотографию в эту область</p>
+                        <p className="review-photo-upload-hint">Нажмите кнопку "Загрузить фото" или перетащите фотографии в эту область</p>
                     )}
                 </div>
 

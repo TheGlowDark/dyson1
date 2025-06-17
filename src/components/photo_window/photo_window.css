@@ -4,7 +4,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,17 +13,18 @@
 
 .photo-modal-content {
     position: relative;
-    width: 90%;
-    height: 90%;
-    max-width: 1200px; /* Ограничиваем максимальный размер */
-    max-height: 800px;
     background-color: #000;
     display: flex;
     flex-direction: column;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     border-radius: 8px;
     overflow: hidden;
-    border: 1px solid #fff; /* Добавляем тонкую белую границу */
+    border: 1px solid #fff;
+    justify-content: center;
+    max-width: 1154px;
+    max-height: 697px;
+    width: auto;
+    height: auto;
 }
 
 .photo-modal-header {
@@ -66,35 +67,43 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #000; /* Изменяем на черный фон */
+    background: transparent;
     position: relative;
+    min-height: 0;
+    padding: 0;
 }
 
 .photo-main-image {
-    max-width: 100%;
-    max-height: 100%;
+    background: transparent;
     object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    width: auto;
+    height: auto;
+    max-width: none;
+    max-height: none;
 }
 
 .photo-nav-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+    background: transparent;
     border: none;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 59px;
+    height: 59px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     z-index: 10;
     transition: background-color 0.2s ease;
+    padding: 0;
 }
 
 .photo-nav-btn:hover {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0,0,0,0.08);
 }
 
 .photo-prev-btn {
@@ -105,36 +114,44 @@
     right: 20px;
 }
 
-.photo-nav-btn img {
-    width: 24px;
-    height: 24px;
-    filter: invert(1); /* Белая стрелка */
+.photo-nav-btn .arrow-icon {
+    width: 32px;
+    height: 32px;
+    filter: none;
+    transform: none;
 }
 
 .photo-nav-btn .arrow-icon.rotated {
-    transform: rotate(180deg); /* Для стрелки вправо */
+    transform: rotate(180deg);
 }
 
-.photo-review-details {
-    background-color: #000;
+.photo-review-details-bottom {
+    position: static;
+    left: unset;
+    right: unset;
+    bottom: unset;
+    background: rgba(0,0,0,0.85);
     color: #fff;
-    padding: 10px 20px 10px 20px; /* Уменьшаем вертикальный отступ */
+    padding: 32px 32px 24px 32px;
     font-family: 'Open Sans', sans-serif;
-    max-height: 200px;
+    max-height: 220px;
     overflow-y: auto;
+    box-sizing: border-box;
+    margin-top: 16px;
+    border-radius: 0 0 8px 8px;
 }
 
 .photo-review-author {
-    font-weight: 600;
-    font-size: 18px; /* Уменьшаем размер шрифта для имени автора */
-    margin-bottom: 5px; /* Немного уменьшаем отступ снизу */
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 8px;
     display: block;
 }
 
 .photo-review-text {
-    font-weight: 300;
-    font-size: 16px;
+    font-weight: 400;
+    font-size: 18px;
     line-height: 1.5;
     margin: 0;
-    color: #ccc;
+    color: #fff;
 } 
