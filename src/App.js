@@ -7,8 +7,8 @@ import Product from './pages/product'; // Import the new Product page
 import './styles/common.css';
 
 // Import other components that are always visible (like Header, Footer)
-import Header from './components/header/Header';
-import Footer from './components/footer/Footer';
+import Header from './sections/header/Header';
+import Footer from './sections/footer/Footer';
 
 function App() {
   return (

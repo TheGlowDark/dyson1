@@ -1,9 +1,9 @@
 import React from 'react';
-import Item from '../components/item_main/item_main';
+import Item from '../sections/item_main/item_main';
 import ProductDetailsTabs from '../components/product_details_tabs/product_details_tabs';
-import FAQ from '../components/FAQ/FAQ';
-import SimilarItems from '../components/similar_items/SimilarItems';
-import DysonAd from '../components/dyson_ad/dyson_ad';
+import FAQ from '../sections/FAQ/FAQ';
+import SimilarItems from '../sections/similar_items/SimilarItems';
+import DysonAd from '../sections/dyson_ad/dyson_ad';
 
 const Product = () => {
     return (

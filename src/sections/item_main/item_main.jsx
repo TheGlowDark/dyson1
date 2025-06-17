@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
-import ProductCardActions from '../product_card_actions/product_card_actions';
+import ProductCardActions from '../../components/product_card_actions/product_card_actions';
 import './item_main.css';
 
 // Import product images and data from where ProductGrid is getting it

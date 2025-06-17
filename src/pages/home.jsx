@@ -1,16 +1,16 @@
 import React from 'react';
-import Header from '../components/header/Header';
-import Promo from '../components/promo/Promo';
-import Sections from '../components/categories/categories';
-import Experts from '../components/experts/experts';
-import Advantages from '../components/advantages/advantages';
-import SpecialOffers from '../components/special_offers/special_offers';
-import Reviews from '../components/reviews/reviews';
-import FAQ from '../components/FAQ/FAQ';
-import News from '../components/news/news';
-import ContactSubscription from '../components/contact_subscription/ContactSubscription';
-import Footer from '../components/footer/Footer';
-import CategoryProductSection from '../components/category_product_section/CategoryProductSection';
+import Header from '../sections/header/Header';
+import Promo from '../sections/promo/Promo';
+import Sections from '../sections/categories/categories';
+import Experts from '../sections/experts/experts';
+import Advantages from '../sections/advantages/advantages';
+import SpecialOffers from '../sections/special_offers/special_offers';
+import Reviews from '../sections/reviews/reviews';
+import FAQ from '../sections/FAQ/FAQ';
+import News from '../sections/news/news';
+import ContactSubscription from '../sections/contact_subscription/ContactSubscription';
+import Footer from '../sections/footer/Footer';
+import CategoryProductSection from '../sections/category_product_section/CategoryProductSection';
 
 const Home = () => {
     return (

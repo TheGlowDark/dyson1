@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import ProductCard from '../product_card/product_card.jsx';
-import ToggleExpandButton from '../show_more/ToggleExpandButton.jsx';
+import ProductCard from '../../components/product_card/product_card.jsx';
+import ToggleExpandButton from '../../components/show_more/ToggleExpandButton.jsx';
 import './similar_items.css';
 
 import productCardImg1 from '../../images/product_images/products/supersonichd07.png';

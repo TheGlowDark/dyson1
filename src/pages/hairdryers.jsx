@@ -1,11 +1,11 @@
 import React from 'react';
-import Experts from '../components/experts/experts';
-import Advantages from '../components/advantages/advantages';
-import Reviews from '../components/reviews/reviews';
-import FAQ from '../components/FAQ/FAQ';
-import News from '../components/news/news';
-import ContactSubscription from '../components/contact_subscription/ContactSubscription';
-import CategoryProductSection from '../components/category_product_section/CategoryProductSection';
+import Experts from '../sections/experts/experts';
+import Advantages from '../sections/advantages/advantages';
+import Reviews from '../sections/reviews/reviews';
+import FAQ from '../sections/FAQ/FAQ';
+import News from '../sections/news/news';
+import ContactSubscription from '../sections/contact_subscription/ContactSubscription';
+import CategoryProductSection from '../sections/category_product_section/CategoryProductSection';
 
 const Hairdryers = () => {
     return (

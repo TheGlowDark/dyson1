@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ProductGrid from '../product_grid/product_grid';
+import ProductGrid from '../../components/product_grid/product_grid';
 import './category_product_section.css';
 
 const CategoryProductSection = () => {

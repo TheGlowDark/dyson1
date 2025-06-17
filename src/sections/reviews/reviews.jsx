@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './reviews.css';
 import arrowCategory from '../../images/icons/arrow_category.svg';
 import starIcon from '../../images/icons/star.svg';
-import ToggleExpandButton from '../show_more/ToggleExpandButton';
+import ToggleExpandButton from '../../components/show_more/ToggleExpandButton.jsx';
 import ReviewWindow from '../review_window/ReviewWindow.jsx';
 import reviewImage1 from '../../images/reviews_images/review1.png';
 import PhotoWindow from '../photo_window/PhotoWindow.jsx';

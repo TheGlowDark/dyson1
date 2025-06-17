@@ -1,4 +1,4 @@
-import Card from '../advantage_card/adv_card';
+import Card from '../../components/advantage_card/adv_card';
 import './advantages.css';
 
 const Advantages = () => {

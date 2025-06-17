@@ -1,4 +1,4 @@
-import YouTubePlayer from "../youtube_player/youtube_player";
+import YouTubePlayer from "../../components/youtube_player/youtube_player";
 
 const DysonAd = () => {
     return (
