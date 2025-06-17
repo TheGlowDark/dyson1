@@ -111,10 +111,10 @@ const Reviews = () => {
               </div>
             </div>
           </div>
-          <div className="review-item">
+          <div className="review-item-rate">
             <div className="review-item__left-panel">
               <div className="review-item__name-rating-group">
-                  <span className="review-item__name">5/5</span>
+                  <span className="review-item__name"><span className='bignum'>5</span> / 5</span>
                     <div className="review-item__stars review-item__stars--top">{renderStars(5)}</div>
                         
                     </div>
