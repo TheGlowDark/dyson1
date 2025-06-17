@@ -4,13 +4,20 @@ import starIconFilled from '../../images/icons/star.svg';
 import starIconEmpty from '../../images/icons/empty_star.svg';
 import closeIcon from '../../images/icons/close.svg';
 
-const ReviewWindow = ({ isOpen, onClose, addReview }) => {
-    const [rating, setRating] = useState(0);
+const ReviewWindow = ({ isOpen, onClose, addReview, initialRating = 0 }) => {
+    const [rating, setRating] = useState(initialRating);
     const [selectedImage, setSelectedImage] = useState(null);
     const fileInputRef = useRef(null);
     const [name, setName] = useState('');
     const [comment, setComment] = useState('');
     const [errors, setErrors] = useState({});
+
+    // Reset form when modal opens with new initialRating
+    React.useEffect(() => {
+        if (isOpen) {
+            setRating(initialRating);
+        }
+    }, [isOpen, initialRating]);
 
     const renderStars = () => {
         const stars = [];
