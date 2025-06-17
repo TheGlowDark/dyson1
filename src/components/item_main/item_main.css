@@ -1,7 +1,4 @@
-.item-main {
-    padding: 40px 0;
-    font-family: 'Open Sans', sans-serif;
-}
+
 
 .container {
     max-width: 1200px;
@@ -137,8 +134,9 @@
 .item-description {
     font-size: 16px;
     line-height: 1.5;
+    font-family: 'Open Sans';
     color: #666;
-    max-height: 72px;
+    max-height: 142px;
     overflow: hidden;
     transition: max-height 0.3s ease;
     cursor: pointer;
@@ -164,22 +162,24 @@
 .availability-text {
     font-size: 16px;
     color: #68AE5C;
+    font-family: 'Open Sans';
 }
 
 .item-price-block {
     display: flex;
     align-items: baseline;
     gap: 16px;
+    font-family: 'NAMU';
 }
 
 .item-old-price {
-    font-size: 24px;
+    font-size: 30px;
     color: #ABABAB;
     text-decoration: line-through;
 }
 
 .item-current-price {
-    font-size: 42px;
+    font-size: 50px;
     font-weight: 700;
     color: #000;
 }

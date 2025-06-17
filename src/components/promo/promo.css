@@ -33,6 +33,7 @@
 .promo__img{
     width: 900px;
     flex-shrink: 0;
+    overflow: hidden;
 }
 
 .promo__img img {

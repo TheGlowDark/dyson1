@@ -22,11 +22,6 @@
     gap: 20px;
 }
 
-@media (max-width: 1024px) {
-    .advantages__grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
 
 @media (max-width: 768px) {
     .advantages__grid {
@@ -44,6 +39,9 @@
         padding-top: 60px;
         padding-bottom: 70px;
     }
+    .advantages__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
     .advantages__title {
         font-size: 26px;
         margin-bottom: 40px;
@@ -54,7 +52,7 @@
     .card-description {
         font-size: 12px;
     }
-    .image-wrapper {
+    .card__image__wrapper {
         width: 74px;
         height: 74px;
     }

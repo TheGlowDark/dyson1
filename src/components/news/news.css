@@ -1,5 +1,5 @@
 .news-section {
-    padding: 150px 0;
+    padding: 60px 0 70px;
     background-color: #FFFFFF;
 }
 
@@ -21,6 +21,16 @@
     text-decoration: underline;
 }
 
+@media (max-width: 1200px) {
+    .news-title{
+        font-size: 26px;
+        margin-bottom: 30px;
+    }
+    .news-grid{
+        margin-bottom: 40px;
+    }
+
+}
 /*.show-more-button {
     display: flex;
     align-items: center;

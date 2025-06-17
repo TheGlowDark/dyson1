@@ -108,13 +108,19 @@ const Reviews = () => {
             <h2 className="reviews-title">Отзывы <span className="reviews-title__count">{reviews.length}</span></h2>
             <div className="reviews-header__row">
               <div className="reviews-rating-block">
-                <span className="reviews-rating-value">5</span>
-                <span className="reviews-rating-max">/ 5</span>
-                <div className="reviews-stars">
-                  {renderStars(5)}
-                </div>
               </div>
-              <button className="reviews-write-btn" onClick={openModal}>Написать отзыв</button>
+            </div>
+          </div>
+          <div className="review-item">
+            <div className="review-item__left-panel">
+              <div className="review-item__name-rating-group">
+                  <span className="review-item__name">5/5</span>
+                    <div className="review-item__stars review-item__stars--top">{renderStars(5)}</div>
+                        
+                    </div>
+              </div>
+                    <div className="review-item__main-content">
+                    <button className="reviews-write-btn" onClick={openModal}>Написать отзыв</button>
             </div>
           </div>
           <div className="reviews-list">

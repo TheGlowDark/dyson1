@@ -20,7 +20,6 @@
     line-height: 1.2;
     margin-bottom: 40px;
     font-weight: 500;
-    width: calc(100% + 300px);
     position: relative;
     z-index: 2;
 }

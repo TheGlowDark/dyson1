@@ -30,15 +30,15 @@
 @media (max-width: 1024px) {
   .container {
     max-width: 900px;
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: 30px;
+    padding-right: 30px;
   }
 }
 @media (max-width: 768px) {
   .container {
     max-width: 100%;
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 
