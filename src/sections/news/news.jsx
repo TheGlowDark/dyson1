@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import NewsCard from '../../components/news_card/news_card.jsx';
 import './news.css';
 import news_image from '../../images/news/news_image.png';
@@ -53,10 +53,25 @@ const News = () => {
 
     const [numDisplayed, setNumDisplayed] = useState(3);
     const [isExpanded, setIsExpanded] = useState(false);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+            if (window.innerWidth <= 768) {
+                setNumDisplayed(isExpanded ? newsData.length : 2);
+            } else {
+                setNumDisplayed(isExpanded ? newsData.length : 3);
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, [isExpanded, newsData.length]);
 
     const handleToggle = () => {
         if (isExpanded) {
-            setNumDisplayed(3);
+            setNumDisplayed(isMobile ? 2 : 3);
         } else {
             setNumDisplayed(newsData.length);
         }
@@ -78,7 +93,7 @@ const News = () => {
                         />
                     ))}
                 </div>
-                {newsData.length > 3 && (
+                {newsData.length > (isMobile ? 2 : 3) && (
                     <ToggleExpandButton 
                         onClick={handleToggle}
                         isExpanded={isExpanded}

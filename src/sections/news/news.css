@@ -16,7 +16,6 @@
     margin-bottom: 80px;
 }
 
-
 .news-card__read-more:hover {
     text-decoration: underline;
 }
@@ -29,9 +28,24 @@
     .news-grid{
         margin-bottom: 40px;
     }
-
 }
-/*.show-more-button {
+
+@media (max-width: 768px) {
+    .news-title{
+        font-size: 26px;
+        margin-bottom: 30px;
+    }
+    .news-grid{
+        margin-bottom: 40px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .news-grid.hidden {
+        display: none;
+    }
+}
+
+.show-more-button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -60,4 +74,4 @@
 
 .show-more-arrow.rotated {
     transform: rotate(180deg);
-}*/
+}

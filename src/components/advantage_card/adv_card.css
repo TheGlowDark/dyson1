@@ -52,4 +52,38 @@
     max-width: 250px;
     margin: 0;
     white-space: pre-line;
+}
+
+@media (max-width: 768px) {
+    .card {
+        height: 116px;
+        padding: 16px;
+    }
+
+    .card__content {
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+        gap: 40px;
+    }
+
+    .card__image__wrapper {
+        width: 74px;
+        height: 74px;
+        flex-shrink: 0;
+    }
+
+    .card__text {
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .card__title {
+        font-size: 13px;
+    }
+
+    .card__description {
+        font-size: 12px;
+        max-width: none;
+    }
 } 

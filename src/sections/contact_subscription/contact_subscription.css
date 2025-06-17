@@ -164,4 +164,40 @@
   .submit-button p {
     font-size: 16px;
   }
+}
+
+@media (max-width: 768px) {
+    .contact-subscription-content {
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .contact-form-wrapper,
+    .subscription-form-wrapper {
+        width: 100%;
+    }
+
+    .contact-subscription-section {
+        padding: 40px 0;
+    }
+
+    .contact-subscription-title {
+        font-size: 26px;
+        margin-bottom: 30px;
+    }
+
+    .form-input {
+        font-size: 16px;
+    }
+
+    .privacy-policy-checkbox p,
+    .privacy-policy-checkbox label {
+        font-size: 12px;
+    }
+
+    .submit-button,
+    .subscribe-button {
+        width: 100%;
+        margin-top: 20px;
+    }
 } 

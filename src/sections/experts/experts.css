@@ -94,15 +94,17 @@
 
 @media (max-width: 768px) {
     .experts {
-        padding: 60px 0;
+        padding: 46px 0 46px;
     }
 
     .experts__title {
-        font-size: 32px;
-        margin-bottom: 30px;
+        font-size: 20px;
+        margin-bottom: 20px;
     }
 
     .experts__text {
-        font-size: 16px;
+        font-weight: 300;
+        line-height: 140%;
+        font-size: 12px;
     }
 } 
