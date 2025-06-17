@@ -182,12 +182,12 @@
     }
 
     .contact-subscription-title {
-        font-size: 26px;
-        margin-bottom: 30px;
+        font-size: 20px;
+        margin-bottom: 20px;
     }
 
     .form-input {
-        font-size: 16px;
+        font-size: 12px;
     }
 
     .privacy-policy-checkbox p,
@@ -197,7 +197,15 @@
 
     .submit-button,
     .subscribe-button {
-        width: 100%;
-        margin-top: 20px;
+        width: auto;
+        min-width: 160px;
+        display: block;
+        margin-left: 0;
+        margin-right: 0;
     }
+  .submit-button,
+  .subscribe-button {
+      font-size: 15px;
+      font-weight: 400;
+  }
 } 

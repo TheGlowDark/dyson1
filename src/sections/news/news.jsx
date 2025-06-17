@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import NewsCard from '../../components/news_card/news_card.jsx';
 import './news.css';
 import news_image from '../../images/news/news_image.png';
-import expandIcon from '../../images/icons/expand.svg';
 import ToggleExpandButton from '../../components/show_more/ToggleExpandButton.jsx'
 
 const News = () => {

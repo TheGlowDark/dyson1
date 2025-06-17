@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './reviews.css';
-import arrowCategory from '../../images/icons/arrow_category.svg';
 import starIcon from '../../images/icons/star.svg';
 import ToggleExpandButton from '../../components/show_more/ToggleExpandButton.jsx';
 import ReviewWindow from '../review_window/ReviewWindow.jsx';
@@ -161,16 +160,18 @@ const Reviews = () => {
                   <span className="review-item__title">{review.title}</span>
                   <div className="review-item__text">{review.text}</div>
                   {review.photos.length > 0 && (
-                    <div className="review-item__photos">
-                      {review.photos.map((photo, idx) => (
-                        <img
-                          src={photo}
-                          alt="Фото отзыва"
-                          key={idx}
-                          className="review-photo"
-                          onClick={() => openPhotoModal(review, idx)}
-                        />
-                      ))}
+                    <>
+                      <div className="review-item__photos">
+                        {review.photos.map((photo, idx) => (
+                          <img
+                            src={photo}
+                            alt="Фото отзыва"
+                            key={idx}
+                            className="review-photo"
+                            onClick={() => openPhotoModal(review, idx)}
+                          />
+                        ))}
+                      </div>
                       <a
                         href="#"
                         className="review-item__photos-link"
@@ -181,7 +182,7 @@ const Reviews = () => {
                       >
                         Смотреть все фото
                       </a>
-                    </div>
+                    </>
                   )}
                 </div>
                 <span className="review-item__date">{review.date}</span>

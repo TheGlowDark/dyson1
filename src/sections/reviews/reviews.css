@@ -1,4 +1,3 @@
-
 .reviews-section {
     padding: 150px 0;
     background-color: #fff;
@@ -168,6 +167,7 @@
 
 .review-item__date {
     flex-shrink: 0;
+    padding-top: 24px;
     margin-left: auto;
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
@@ -207,6 +207,7 @@
     line-height: 140%;
     color: #444;
     margin-bottom: 0;
+    font-variant-ligatures: none;
     word-wrap: break-word;
     overflow-wrap: break-word;
     max-width: 100%;
@@ -340,7 +341,16 @@
         width: 61px;
         height: 61px;
     }
-    .review-item__photos-link{
-        font-size: 12px;
+    .review-item__photos-link {
+        display: block;
+        width: 100%;
+        margin: 8px 0 0 0;
+        text-align: left;
+        font-size: 15px;
+        color: #C5358C;
+        font-weight: 400;
+    }
+    .review-item__photos {
+        margin-bottom: 0;
     }
 }
