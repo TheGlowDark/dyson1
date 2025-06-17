@@ -64,24 +64,32 @@
 }
 
 @media (max-width: 1200px) {
+    .experts {
+        padding-top: 60px;
+        padding-bottom: 70px;
+    }
     .experts__content {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 0;
     }
-
+    .experts__image {
+        display: none;
+    }
     .experts__info {
         max-width: 100%;
     }
-
     .experts__title {
-        width: 100%;
+        font-size: 26px;
+        margin-bottom: 20px;
     }
-
-    .experts__image {
+    .experts__text {
+        font-size: 12px;
+        line-height: 1.4;
         width: 100%;
-        height: auto;
-        max-width: 700px;
-        margin: 0 auto;
+        font-family: 'Open Sans', sans-serif;
+    }
+    .experts__text p {
+        margin-bottom: 8px;
     }
 }
 

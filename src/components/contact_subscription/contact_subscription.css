@@ -130,4 +130,38 @@
 .form-input.error:focus {
   border-color: #ff4d4d;
   box-shadow: 0 0 0 2px rgba(255, 77, 77, 0.2);
+}
+
+@media (max-width: 1200px) {
+  .contact-subscription-section {
+    padding-top: 60px;
+    padding-bottom: 70px;
+  }
+  .contact-subscription-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  .form-input {
+    font-size: 12px;
+  }
+  .privacy-policy-checkbox p,
+  .privacy-policy-checkbox label {
+    font-size: 10px;
+  }
+  .custom-checkbox {
+    width: 20px;
+    height: 20px;
+  }
+  .custom-checkbox img {
+    width: 12px;
+    height: 12px;
+  }
+  .subscribe-button,
+  .submit-button {
+    margin-top: 10px;
+  }
+  .subscribe-button p,
+  .submit-button p {
+    font-size: 16px;
+  }
 } 

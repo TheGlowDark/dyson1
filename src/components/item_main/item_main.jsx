@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
+import ProductCardActions from '../product_card_actions/product_card_actions';
 import './item_main.css';
 
 // Import product images and data from where ProductGrid is getting it
@@ -15,8 +16,6 @@ import img3 from '../../images/product_main/img3.png';
 import img4 from '../../images/product_main/img4.png';
 import img5 from '../../images/product_main/img5.png';
 
-import heartIcon from '../../images/icons/heart.svg';
-import cartIcon from '../../images/icons/cart.svg';
 import arrowIcon from '../../images/icons/arrow_item_photo.svg';
 
 const allProducts = [
@@ -120,7 +119,9 @@ const Item = () => {
     };
 
     const handleIncrement = () => {
-        setQuantity(quantity + 1);
+        if (quantity < 99) {
+            setQuantity(quantity + 1);
+        }
     };
 
     const handleQuantityChange = (e) => {
@@ -128,12 +129,17 @@ const Item = () => {
         if (value === '') {
             setQuantity('');
         } else {
-            setQuantity(Math.max(1, parseInt(value, 10)));
+            const parsedValue = parseInt(value, 10);
+            setQuantity(Math.min(Math.max(1, parsedValue), 99));
         }
     };
 
     const handleQuantityBlur = () => {
-        if (!quantity || quantity < 1) setQuantity(1);
+        if (!quantity || quantity < 1) {
+            setQuantity(1);
+        } else if (quantity > 99) {
+            setQuantity(99);
+        }
     };
 
     const handleAddToCart = () => {
@@ -162,38 +168,31 @@ const Item = () => {
                 </div>
                 <div className="item-content">
                     <div className="item-gallery">
-                        <div className="item-thumbnails">
+                        <div className="thumbnails">
                             {showPrevButton && (
-                                <button 
-                                    className="thumb-nav-btn prev-btn"
-                                    onClick={handlePrevThumbs}
-                                >
-                                    <img src={arrowIcon} alt="Previous" className="arrow-up" />
+                                <button className="thumb-nav-btn prev" onClick={handlePrevThumbs}>
+                                    <img src={arrowIcon} alt="Previous" />
                                 </button>
                             )}
-                            <div className={`thumbnails-container ${showPrevButton ? 'has-prev' : ''} ${showNextButton ? 'has-next' : ''}`}>
+                            <div className="thumbnails-list">
                                 {visibleThumbnails.map((thumb, index) => (
-                                    <div 
-                                        key={currentThumbIndex + index}
-                                        className={`thumbnail-item ${mainImage === thumb ? 'active' : ''}`}
+                                    <div
+                                        key={index}
+                                        className={`thumbnail ${thumb === mainImage ? 'active' : ''}`}
                                         onClick={() => setMainImage(thumb)}
                                     >
-                                        <img src={thumb} alt={`Thumbnail ${currentThumbIndex + index + 1}`} />
+                                        <img src={thumb} alt={`Thumbnail ${index + 1}`} />
                                     </div>
                                 ))}
                             </div>
                             {showNextButton && (
-                                <button 
-                                    className="thumb-nav-btn next-btn"
-                                    onClick={handleNextThumbs}
-                                >
-                                    <img src={arrowIcon} alt="Next" className="arrow-down" />
+                                <button className="thumb-nav-btn next" onClick={handleNextThumbs}>
+                                    <img src={arrowIcon} alt="Next" />
                                 </button>
                             )}
                         </div>
                         <div className="item-main-image">
                             <img src={mainImage} alt={product.title} />
-                            <img src={heartIcon} alt="Add to Favorites" className="heart-icon" />
                         </div>
                     </div>
                     <div className="item-info">
@@ -213,36 +212,14 @@ const Item = () => {
                             {product.oldPrice && <span className="item-old-price">{product.oldPrice.toLocaleString()}Р</span>}
                             <span className="item-current-price">{product.price.toLocaleString()}Р</span>
                         </div>
-                        <div className="item-actions">
-                            <div className="item-quantity">
-                                <button 
-                                    className="quantity-btn" 
-                                    onClick={handleDecrement}
-                                    disabled={quantity <= 1}
-                                >
-                                    −
-                                </button>
-                                <input 
-                                    type="text" 
-                                    className="quantity-input" 
-                                    value={quantity}
-                                    onChange={handleQuantityChange}
-                                    onBlur={handleQuantityBlur}
-                                />
-                                <button 
-                                    className="quantity-btn" 
-                                    onClick={handleIncrement}
-                                >
-                                    +
-                                </button>
-                            </div>
-                            <button 
-                                className="add-to-cart-btn"
-                                onClick={handleAddToCart}
-                            >
-                                В корзину <img src={cartIcon} alt="Cart" />
-                            </button>
-                        </div>
+                        <ProductCardActions
+                            quantity={quantity}
+                            onDecrement={handleDecrement}
+                            onIncrement={handleIncrement}
+                            onQuantityChange={handleQuantityChange}
+                            onQuantityBlur={handleQuantityBlur}
+                            onAddToCart={handleAddToCart}
+                        />
                     </div>
                 </div>
             </div>

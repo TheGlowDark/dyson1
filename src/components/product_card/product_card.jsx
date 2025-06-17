@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
+import ProductCardActions from '../product_card_actions/product_card_actions';
 import './styles.css';
 
 const ProductCard = ({ 
@@ -88,36 +89,14 @@ const ProductCard = ({
                     {oldPrice && <span className="product-card__old-price">{oldPrice.toLocaleString()}Р</span>}
                 </div>
             </div>
-            <div className="product-card__actions">
-                <div className="product-card__quantity" onClick={e => e.stopPropagation()}>
-                    <button 
-                        className="product-card__quantity-btn" 
-                        onClick={handleDecrement}
-                        disabled={quantity <= 1}
-                    >
-                        −
-                    </button>
-                    <input 
-                        type="text" 
-                        className="product-card__quantity-input" 
-                        value={quantity}
-                        onChange={handleQuantityChange}
-                        onBlur={handleQuantityBlur}
-                    />
-                    <button 
-                        className="product-card__quantity-btn" 
-                        onClick={handleIncrement}
-                    >
-                        +
-                    </button>
-                </div>
-                <button 
-                    className="product-card__add-to-cart"
-                    onClick={handleAddToCart}
-                >
-                    В корзину
-                </button>
-            </div>
+            <ProductCardActions
+                quantity={quantity}
+                onDecrement={handleDecrement}
+                onIncrement={handleIncrement}
+                onQuantityChange={handleQuantityChange}
+                onQuantityBlur={handleQuantityBlur}
+                onAddToCart={handleAddToCart}
+            />
         </div>
     );
 };
