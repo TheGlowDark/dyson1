@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
-import Home from './pages/Home';
+import Home from './pages/home';
 import Hairdryers from './pages/hairdryers'; // Assuming you want a separate page for hairdryers
 import Product from './pages/product'; // Import the new Product page
 import './styles/common.css';
