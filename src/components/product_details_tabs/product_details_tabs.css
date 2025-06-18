@@ -6,13 +6,35 @@
 }
 
 .tabs-header {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-    margin-bottom: 30px;
-    padding-bottom: 10px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 0;
+    overflow-x: visible;
+    white-space: normal;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.tabs-header::-webkit-scrollbar {
+    height: 6px;
+}
+.tabs-header::-webkit-scrollbar-thumb {
+    background: #C5358C;
+    border-radius: 3px;
+}
+.tabs-header::-webkit-scrollbar-track {
+    background: #eee;
+    border-radius: 3px;
+}
+
+.tabs-header > * {
+    flex: 1 1 0;
+    min-width: 0;
 }
 
 .tab-item {
+    flex: 1 1 0;
+    min-width: 0;
     padding: 12px 0;
     font-size: 16px;
     font-weight: 600;
@@ -22,7 +44,7 @@
     cursor: pointer;
     position: relative;
     transition: color 0.3s ease, border-bottom 0.3s ease;
-    white-space: nowrap;
+    white-space: normal;
     text-align: center;
     border-bottom: 2px solid #e0e0e0;
 }

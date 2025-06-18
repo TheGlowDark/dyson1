@@ -9,8 +9,6 @@ import arrowCategory from '../../images/icons/arrow_category.svg';
 const ProductGrid = ({ products: productsProp, onProductCountChange }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [sortBy, setSortBy] = useState('popular');
-    
-    // Используем пропсы, если они есть, иначе локальный массив
     const products = productsProp || [
         {
             id: 1,

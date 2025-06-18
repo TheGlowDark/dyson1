@@ -184,3 +184,29 @@
     }
 } 
 
+.tabs-header {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #C5358C #eee;
+    gap: 12px;
+}
+
+.tabs-header::-webkit-scrollbar {
+    height: 6px;
+}
+.tabs-header::-webkit-scrollbar-thumb {
+    background: #C5358C;
+    border-radius: 3px;
+}
+.tabs-header::-webkit-scrollbar-track {
+    background: #eee;
+    border-radius: 3px;
+}
+
+.tabs-header > * {
+    flex-shrink: 0;
+}
+

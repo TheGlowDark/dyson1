@@ -9,29 +9,21 @@
 }
 
 .sort-select {
+    font-family: 'Open Sans';
     padding: 12px 24px;
     min-width: 260px;
     font-size: 22px;
-    color: #111;
     background: #fff;
-    border: 2px solid transparent;
+    border: 1px solid transparent;
     border-radius: 12px;
     border-image: linear-gradient(90deg, #C5358C 0%, #E05B99 100%);
     border-image-slice: 1;
     outline: none;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
     position: relative;
-    font-family: inherit;
     font-weight: 400;
     transition: border-color 0.2s;
     cursor: pointer;
     box-sizing: border-box;
-    background-image: url('../../images/icons/expand_category.svg');
-    background-repeat: no-repeat;
-    background-position: right 18px center;
-    background-size: 18px 18px;
 }
 
 .sort-select:focus {

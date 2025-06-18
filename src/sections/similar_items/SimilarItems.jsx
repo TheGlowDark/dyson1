@@ -54,7 +54,7 @@ const SimilarItems = ({ currentProductId }) => {
                         <ProductCard
                             key={product.id}
                             id={product.id}
-                            image={images[product.image]}
+                            image={product.image}
                             title={product.title}
                             inStock={product.inStock}
                             price={product.price}

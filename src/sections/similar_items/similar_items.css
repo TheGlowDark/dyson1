@@ -22,3 +22,9 @@
 .similar-items-show-more {
     margin-bottom: 0;
 }
+
+@media (max-width: 768px) {
+    .similar-items-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
