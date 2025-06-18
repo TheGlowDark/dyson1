@@ -8,7 +8,7 @@ import RulesContent from './content/RulesContent';
 import WarrantyContent from './content/WarrantyContent';
 import CertificatesContent from './content/CertificatesContent';
 
-const ProductDetailsTabs = () => {
+const ProductDetailsTabs = ({ product }) => {
     const [activeTab, setActiveTab] = useState('bundle');
 
     const tabs = [
@@ -23,7 +23,7 @@ const ProductDetailsTabs = () => {
 
     const tabContent = {
         bundle: <BundleContent />,
-        specifications: <SpecificationsContent />,
+        specifications: <SpecificationsContent specifications={product?.specifications || []} />,
         delivery: <DeliveryContent />,
         payment: <PaymentContent />,
         rules: <RulesContent />,

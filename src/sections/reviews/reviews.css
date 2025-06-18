@@ -217,10 +217,6 @@
     gap: 4px;
 }
 
-.review-item__stars--top {
-    /* Этот класс больше не нужен, так как звезды теперь в .review-item__left-panel */
-    /* Но оставляем его, если он где-то еще используется для общего стиля звезд */
-}
 
 .review-item__photos {
     display: flex;

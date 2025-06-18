@@ -5,14 +5,16 @@ import ProductDetailsTabs from '../components/product_details_tabs/product_detai
 import FAQ from '../sections/FAQ/FAQ';
 import SimilarItems from '../sections/similar_items/SimilarItems';
 import DysonAd from '../sections/dyson_ad/dyson_ad';
+import products from '../data/products.json';
 
 const Product = () => {
     const { id } = useParams();
+    const product = products.find(p => p.id === parseInt(id, 10));
 
     return (
         <div className="App">
             <Item />
-            <ProductDetailsTabs />
+            <ProductDetailsTabs product={product} />
             <FAQ />
             <DysonAd />
             <SimilarItems currentProductId={parseInt(id, 10)} />
