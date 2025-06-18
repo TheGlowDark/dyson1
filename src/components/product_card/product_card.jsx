@@ -4,6 +4,18 @@ import { useCart } from '../../context/CartContext';
 import ProductCardActions from '../product_card_actions/product_card_actions';
 import './styles.css';
 
+// Универсальный импорт всех картинок из папки images
+function importAll(r) {
+    let images = {};
+    r.keys().forEach((item) => { 
+        // Убираем './' и сохраняем полный путь включая подпапки
+        const key = item.replace('./', '');
+        images[key] = r(item); 
+    });
+    return images;
+}
+const images = importAll(require.context('../../images', true, /\.(png|jpe?g|svg)$/));
+
 const ProductCard = ({ 
     image, 
     title, 
@@ -73,7 +85,7 @@ const ProductCard = ({
     return (
         <div className="product-card" onClick={handleCardClick}>
             <div className="product-card__image">
-                <img src={image} alt={title} />
+                <img src={images[image]} alt={title} />
             </div>
             <div className="product-card__info">
                 <p className="product-card__title">{title}</p>

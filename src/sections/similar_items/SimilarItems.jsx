@@ -1,50 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProductCard from '../../components/product_card/product_card.jsx';
 import ToggleExpandButton from '../../components/show_more/ToggleExpandButton.jsx';
 import './similar_items.css';
+import products from '../../data/products.json';
 
-import productCardImg1 from '../../images/product_images/products/supersonichd07.png';
-import productCardImg2 from '../../images/product_images/products/supersonichd07_5c.png';
-import productCardImg3 from '../../images/product_images/products/supersonichd03purple.png';
+// Универсальный импорт всех картинок из папки images
+function importAll(r) {
+    let images = {};
+    r.keys().forEach((item) => { 
+        // Убираем './' и сохраняем полный путь включая подпапки
+        const key = item.replace('./', '');
+        images[key] = r(item); 
+    });
+    console.log('Available image keys:', Object.keys(images));
+    return images;
+}
+const images = importAll(require.context('../../images', true, /\.(png|jpe?g|svg)$/));
 
-const SimilarItems = () => {
-    const initialProducts = [
-        {
-            id: 1,
-            image: productCardImg1,
-            title: 'Фен Dyson Supersonic HD07 синий медный с 5 насадками в чехле и расческамия',
-            inStock: true,
-            price: 59990,
-            oldPrice: 69990
-        },
-        {
-            id: 2,
-            image: productCardImg2,
-            title: 'Фен Dyson Supersonic HD07 с 5 насадками и подставкой',
-            inStock: true,
-            price: 47990,
-            oldPrice: 51990
-        },
-        {
-            id: 3,
-            image: productCardImg3,
-            title: 'Фен Dyson Supersonic 4 насадки HD03 с чехлом для хранения цвет сирень',
-            inStock: true,
-            price: 46990,
-            oldPrice: 49990
-        },
-    ];
-
-    const [displayedProducts, setDisplayedProducts] = useState(initialProducts);
+const SimilarItems = ({ currentProductId }) => {
+    const [allSimilarProducts, setAllSimilarProducts] = useState([]);
+    const [displayedProducts, setDisplayedProducts] = useState([]);
     const [isExpanded, setIsExpanded] = useState(false);
 
-    const handleToggle = () => {
-        // In a real application, you would fetch more products here
-        // For now, let's just duplicate the initial products for demonstration
-        if (isExpanded) {
-            setDisplayedProducts(initialProducts);
+    useEffect(() => {
+        const currentProduct = products.find(p => p.id === currentProductId);
+        if (currentProduct && currentProduct.similar) {
+            const similar = products.filter(p => currentProduct.similar.includes(p.id));
+            console.log('Similar products image paths:', similar.map(p => p.image));
+            setAllSimilarProducts(similar);
+            setDisplayedProducts(similar.slice(0, 3));
+            setIsExpanded(false);
         } else {
-            setDisplayedProducts([...initialProducts, ...initialProducts]); // Simulate loading more
+            setAllSimilarProducts([]);
+            setDisplayedProducts([]);
+        }
+    }, [currentProductId]);
+
+    const handleToggle = () => {
+        if (isExpanded) {
+            setDisplayedProducts(allSimilarProducts.slice(0, 3));
+        } else {
+            setDisplayedProducts(allSimilarProducts);
         }
         setIsExpanded(!isExpanded);
     };
@@ -57,7 +53,8 @@ const SimilarItems = () => {
                     {displayedProducts.map(product => (
                         <ProductCard
                             key={product.id}
-                            image={product.image}
+                            id={product.id}
+                            image={images[product.image]}
                             title={product.title}
                             inStock={product.inStock}
                             price={product.price}
@@ -65,13 +62,14 @@ const SimilarItems = () => {
                         />
                     ))}
                 </div>
-                {/* Only show the button if there are more items to potentially load */}
-                <ToggleExpandButton 
-                    onClick={handleToggle}
-                    isExpanded={isExpanded}
-                    collapsedText="Показать еще"
-                    expandedText="Свернуть"
-                />
+                {allSimilarProducts.length > 3 && (
+                    <ToggleExpandButton
+                        onClick={handleToggle}
+                        isExpanded={isExpanded}
+                        collapsedText="Показать еще"
+                        expandedText="Свернуть"
+                    />
+                )}
             </div>
         </section>
     );

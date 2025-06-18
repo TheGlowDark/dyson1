@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import ProductGrid from '../../components/product_grid/product_grid';
 import './category_product_section.css';
+import products from '../../data/products.json';
 
 const CategoryProductSection = () => {
-    const [productCount, setProductCount] = useState(0);
+    const [productCount, setProductCount] = useState(products.length);
 
     const handleProductCountChange = (count) => {
         setProductCount(count);
@@ -18,7 +19,7 @@ const CategoryProductSection = () => {
                     <span className="breadcrumb-current">Фены Dyson</span>
                 </div>
                 <h1 className="category-product-title">Фены Dyson <span className="product-count">{productCount}</span></h1>
-                <ProductGrid onProductCountChange={handleProductCountChange} />
+                <ProductGrid products={products} onProductCountChange={handleProductCountChange} />
             </div>
         </section>
     );

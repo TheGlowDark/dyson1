@@ -18,48 +18,7 @@ import img5 from '../../images/product_main/img5.png';
 
 import arrowIcon from '../../images/icons/arrow_item_photo.svg';
 
-const allProducts = [
-    {
-        id: 1,
-        image: dysonHd07Blue,
-        title: "Фен Dyson Supersonic HD07 синий медный с 5 насадками в чехле и расческами",
-        price: 59990,
-        oldPrice: 69990,
-        inStock: true,
-        discount: 15,
-        deliveryDate: "2024-02-15",
-        rating: 4.8,
-        orderCount: 256,
-        thumbnails: [dysonHd07Blue, img1, img2, img3, img4, img5] 
-    },
-    {
-        id: 2,
-        image: dysonHd07Stand,
-        title: "Фен Dyson Supersonic HD07 с 5 насадками и подставкой",
-        price: 47990,
-        oldPrice: 51990,
-        inStock: true,
-        discount: 15,
-        deliveryDate: "2024-03-01",
-        rating: 4.9,
-        orderCount: 189,
-        thumbnails: [dysonHd07Stand, img1, img2, img3, img4, img5]
-    },
-    {
-        id: 3,
-        image: dyson4Purple,
-        title: "Фен Dyson Supersonic 4 насадки HD03 с чехлом для хранения цвет сирень",
-        price: 46990,
-        oldPrice: 51990,
-        inStock: true,
-        discount: 15,
-        deliveryDate: "2024-03-10",
-        rating: 4.7,
-        orderCount: 142,
-        thumbnails: [dyson4Purple, img1, img2, img3, img4, img5]
-    }
-    // Add other products as needed, mirroring the structure in ProductGrid
-];
+import products from '../../data/products.json';
 
 const Item = () => {
     const { id } = useParams();
@@ -74,10 +33,10 @@ const Item = () => {
     const thumbnailsPerPage = 5;
 
     useEffect(() => {
-        const foundProduct = allProducts.find(p => p.id === parseInt(id));
+        const foundProduct = products.find(p => p.id === parseInt(id));
         if (foundProduct) {
             setProduct(foundProduct);
-            setMainImage(foundProduct.image);
+            setMainImage(require(`../../images/${foundProduct.image}`));
         } else {
             setProduct(null);
         }
@@ -104,7 +63,7 @@ const Item = () => {
         );
     };
 
-    const visibleThumbnails = product?.thumbnails.slice(
+    const visibleThumbnails = product?.thumbnails.map(img => require(`../../images/${img}`)).slice(
         currentThumbIndex,
         currentThumbIndex + thumbnailsPerPage
     ) || [];

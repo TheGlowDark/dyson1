@@ -6,11 +6,12 @@ import dysonHd07Stand from '../../images/product_cards/dyson-hd07-stand.png';
 import dyson4Purple from '../../images/product_cards/dyson-4-purple.png';
 import arrowCategory from '../../images/icons/arrow_category.svg';
 
-const ProductGrid = ({ onProductCountChange }) => {
+const ProductGrid = ({ products: productsProp, onProductCountChange }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [sortBy, setSortBy] = useState('popular');
     
-    const products = [
+    // Используем пропсы, если они есть, иначе локальный массив
+    const products = productsProp || [
         {
             id: 1,
             image: dysonHd07Blue,

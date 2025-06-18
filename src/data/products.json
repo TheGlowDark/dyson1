@@ -1,0 +1,209 @@
+[
+  {
+    "id": 1,
+    "image": "product_cards/dyson-hd07-blue.png",
+    "title": "Фен Dyson Supersonic HD07 синий медный с 5 насадками в чехле и расческами",
+    "price": 59990,
+    "oldPrice": 69990,
+    "inStock": true,
+    "discount": 15,
+    "deliveryDate": "2024-02-15",
+    "rating": 4.8,
+    "orderCount": 256,
+    "thumbnails": [
+      "product_cards/dyson-hd07-blue.png",
+      "product_main/img1.png",
+      "product_main/img2.png",
+      "product_main/img3.png",
+      "product_main/img4.png",
+      "product_main/img5.png"
+    ],
+    "similar": [2, 3, 4, 6]
+  },
+  {
+    "id": 2,
+    "image": "product_cards/dyson-hd07-stand.png",
+    "title": "Фен Dyson Supersonic HD07 с 5 насадками и подставкой",
+    "price": 47990,
+    "oldPrice": 51990,
+    "inStock": true,
+    "discount": 8,
+    "deliveryDate": "2024-03-01",
+    "rating": 4.9,
+    "orderCount": 189,
+    "thumbnails": [
+      "product_cards/dyson-hd07-stand.png",
+      "product_main/img1.png",
+      "product_main/img2.png",
+      "product_main/img3.png",
+      "product_main/img4.png",
+      "product_main/img5.png"
+    ],
+    "similar": [1, 3, 5, 6]
+  },
+  {
+    "id": 3,
+    "image": "product_cards/dyson-4-purple.png",
+    "title": "Фен Dyson Supersonic 4 насадки HD03 с чехлом для хранения цвет сирень",
+    "price": 46990,
+    "inStock": true,
+    "discount": 0,
+    "deliveryDate": "2024-03-10",
+    "rating": 4.7,
+    "orderCount": 142,
+    "thumbnails": [
+      "product_cards/dyson-4-purple.png",
+      "product_main/img1.png",
+      "product_main/img2.png",
+      "product_main/img3.png",
+      "product_main/img4.png",
+      "product_main/img5.png"
+    ],
+    "similar": [1, 2, 6]
+  },
+  {
+    "id": 4,
+    "image": "product_cards/dyson-hd07-blue.png",
+    "title": "Фен Dyson Supersonic HD07 синий медный с 5 насадками в чехле и расческами",
+    "price": 59990,
+    "inStock": true,
+    "discount": 0,
+    "deliveryDate": "2024-02-15",
+    "rating": 4.8,
+    "orderCount": 256,
+    "thumbnails": [
+      "product_cards/dyson-hd07-blue.png",
+      "product_main/img1.png",
+      "product_main/img2.png",
+      "product_main/img3.png",
+      "product_main/img4.png",
+      "product_main/img5.png"
+    ],
+    "similar": [1, 2, 3]
+  },
+  {
+    "id": 5,
+    "image": "product_cards/dyson-hd07-stand.png",
+    "title": "Фен Dyson Supersonic HD07 с 5 насадками и подставкой",
+    "price": 47990,
+    "inStock": true,
+    "discount": 0,
+    "deliveryDate": "2024-03-01",
+    "rating": 4.9,
+    "orderCount": 189,
+    "thumbnails": [
+      "product_cards/dyson-hd07-stand.png",
+      "product_main/img1.png",
+      "product_main/img2.png",
+      "product_main/img3.png",
+      "product_main/img4.png",
+      "product_main/img5.png"
+    ],
+    "similar": [2, 3, 6]
+  },
+  {
+    "id": 6,
+    "image": "product_cards/dyson-4-purple.png",
+    "title": "Фен Dyson Supersonic 4 насадки HD03 с чехлом для хранения цвет сирень",
+    "price": 46990,
+    "oldPrice": 51990,
+    "inStock": true,
+    "discount": 10,
+    "deliveryDate": "2024-03-10",
+    "rating": 4.7,
+    "orderCount": 142,
+    "thumbnails": [
+      "product_cards/dyson-4-purple.png",
+      "product_main/img1.png",
+      "product_main/img2.png",
+      "product_main/img3.png",
+      "product_main/img4.png",
+      "product_main/img5.png"
+    ],
+    "similar": [1, 2, 3]
+  },
+  {
+    "id": 7,
+    "image": "product_cards/dyson-hd07-stand.png",
+    "title": "Фен Dyson Supersonic HD07 с 5 насадками и подставкой",
+    "price": 46990,
+    "oldPrice": 51990,
+    "inStock": true,
+    "discount": 10,
+    "deliveryDate": "2024-03-01",
+    "rating": 4.9,
+    "orderCount": 189,
+    "thumbnails": [
+      "product_cards/dyson-hd07-stand.png",
+      "product_main/img1.png",
+      "product_main/img2.png",
+      "product_main/img3.png",
+      "product_main/img4.png",
+      "product_main/img5.png"
+    ],
+    "similar": [1, 3, 5]
+  },
+  {
+    "id": 8,
+    "image": "product_cards/dyson-hd07-blue.png",
+    "title": "Фен Dyson Supersonic HD08 золотой с 5 насадками и чехлом",
+    "price": 62990,
+    "oldPrice": 69990,
+    "inStock": true,
+    "discount": 10,
+    "deliveryDate": "2024-04-01",
+    "rating": 4.9,
+    "orderCount": 210,
+    "thumbnails": [
+      "product_cards/dyson-hd07-blue.png",
+      "product_main/img1.png",
+      "product_main/img2.png",
+      "product_main/img3.png",
+      "product_main/img4.png",
+      "product_main/img5.png"
+    ],
+    "similar": [1, 2, 6]
+  },
+  {
+    "id": 9,
+    "image": "product_cards/dyson-4-purple.png",
+    "title": "Фен Dyson Supersonic HD08 серебристый с 5 насадками и чехлом",
+    "price": 61990,
+    "oldPrice": 69990,
+    "inStock": true,
+    "discount": 12,
+    "deliveryDate": "2024-04-10",
+    "rating": 4.8,
+    "orderCount": 180,
+    "thumbnails": [
+      "product_cards/dyson-4-purple.png",
+      "product_main/img1.png",
+      "product_main/img2.png",
+      "product_main/img3.png",
+      "product_main/img4.png",
+      "product_main/img5.png"
+    ],
+    "similar": [2, 3, 8]
+  },
+  {
+    "id": 10,
+    "image": "product_cards/dyson-hd07-stand.png",
+    "title": "Фен Dyson Supersonic HD09 розовый с 5 насадками и чехлом",
+    "price": 60990,
+    "oldPrice": 69990,
+    "inStock": true,
+    "discount": 13,
+    "deliveryDate": "2024-04-15",
+    "rating": 4.7,
+    "orderCount": 170,
+    "thumbnails": [
+      "product_cards/dyson-hd07-stand.png",
+      "product_main/img1.png",
+      "product_main/img2.png",
+      "product_main/img3.png",
+      "product_main/img4.png",
+      "product_main/img5.png"
+    ],
+    "similar": [1, 8, 9]
+  }
+] 

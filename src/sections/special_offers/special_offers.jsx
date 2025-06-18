@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ProductGrid from '../../components/product_grid/product_grid';
 import './special_offers.css';
+import products from '../../data/products.json';
 
 const SpecialOffers = () => {
     const [activeFilters, setActiveFilters] = useState([]);
@@ -21,72 +22,8 @@ const SpecialOffers = () => {
         }
     };
 
-    // Get products count from ProductGrid
-    const products = [
-        {
-            id: 1,
-            image: "/images/products/dyson-hd07-blue.png",
-            title: "Фен Dyson Supersonic HD07 синий медный с 5 насадками в чехле и расческами",
-            price: 59990,
-            oldPrice: 69990,
-            inStock: true,
-            discount: 15,
-        },
-        {
-            id: 2,
-            image: "/images/products/dyson-hd07-stand.png",
-            title: "Фен Dyson Supersonic HD07 с 5 насадками и подставкой",
-            price: 47990,
-            oldPrice: 51990,
-            inStock: true,
-            discount: 15,
-        },
-        {
-            id: 3,
-            image: "/images/products/dyson-4-purple.png",
-            title: "Фен Dyson Supersonic 4 насадки HD03 с чехлом для хранения цвет сирень",
-            price: 46990,
-            oldPrice: 51990,
-            inStock: true,
-            discount: 15,
-        },
-        {
-            id: 4,
-            image: "/images/products/dyson-hd07-blue.png",
-            title: "Фен Dyson Supersonic HD07 синий медный с 5 насадками в чехле и расческами",
-            price: 59990,
-            oldPrice: 69990,
-            inStock: true,
-            discount: 15,
-        },
-        {
-            id: 5,
-            image: "/images/products/dyson-hd07-stand.png",
-            title: "Фен Dyson Supersonic HD07 с 5 насадками и подставкой",
-            price: 47990,
-            oldPrice: 51990,
-            inStock: true,
-            discount: 15,
-        },
-        {
-            id: 6,
-            image: "/images/products/dyson-4-purple.png",
-            title: "Фен Dyson Supersonic 4 насадки HD03 с чехлом для хранения цвет сирень",
-            price: 46990,
-            oldPrice: 51990,
-            inStock: true,
-            discount: 15,
-        },
-        {
-            id: 7,
-            image: "/images/products/dyson-hd07-stand.png",
-            title: "Фен Dyson Supersonic HD07 с 5 насадками и подставкой",
-            price: 47990,
-            oldPrice: 51990,
-            inStock: true,
-            discount: 15,
-        }
-    ];
+    // Фильтруем только товары со скидкой
+    const discountedProducts = products.filter(p => p.discount > 0);
 
     return (
         <div className="special-offers">
@@ -95,11 +32,11 @@ const SpecialOffers = () => {
                 <div className="special-offers__header">
                     <div className="special-offers__title-block">
                         <h1 className="special-offers__title">Спецпредложения
-                        <span className="special-offers__count"> {products.length}</span>
+                        <span className="special-offers__count"> {discountedProducts.length}</span>
                         </h1>
                     </div>
                 </div>                    
-                <ProductGrid />
+                <ProductGrid products={discountedProducts} />
             </div>
             </div>
         </div>
