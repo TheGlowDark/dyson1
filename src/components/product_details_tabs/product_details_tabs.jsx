@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './product_details_tabs.css';
 import BundleContent from './content/BundleContent';
 import SpecificationsContent from './content/SpecificationsContent';
@@ -10,6 +10,7 @@ import CertificatesContent from './content/CertificatesContent';
 
 const ProductDetailsTabs = ({ product }) => {
     const [activeTab, setActiveTab] = useState('bundle');
+    const tabsHeaderRef = useRef(null);
 
     const tabs = [
         { id: 'bundle', label: 'Комплектация' },
@@ -31,10 +32,21 @@ const ProductDetailsTabs = ({ product }) => {
         certificates: <CertificatesContent />
     };
 
+    // Горизонтальный скролл колесиком мыши
+    const handleWheel = (e) => {
+        if (tabsHeaderRef.current && e.deltaY !== 0) {
+            tabsHeaderRef.current.scrollLeft += e.deltaY;
+        }
+    };
+
     return (
         <div className="product-details-tabs">
-            <div className="container">
-                <div className="tabs-header">
+            <div className="container" style={{ overflowX: 'auto' }}>
+                <div
+                    className="tabs-header"
+                    ref={tabsHeaderRef}
+                    onWheel={handleWheel}
+                >
                     {tabs.map(tab => (
                         <div
                             key={tab.id}

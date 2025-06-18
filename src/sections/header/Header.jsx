@@ -43,11 +43,11 @@ function Header() {
                     >
                         <nav className="header_nav" ref={navRef}>
                             <ul>
-                                <li><Link to="/about" className="hover-opacity">О нас</Link></li>
-                                <li><Link to="/delivery" className="hover-opacity">Доставка и оплата</Link></li>
-                                <li><Link to="/register" className="hover-opacity">Регистрация продукта</Link></li>
-                                <li><Link to="/service" className="hover-opacity">Сервис</Link></li>
-                                <li><Link to="/certificates" className="hover-opacity">Сертификаты и лицензии</Link></li>
+                                <li><Link to="/#!" className="hover-opacity">О нас</Link></li>
+                                <li><Link to="/#!" className="hover-opacity">Доставка и оплата</Link></li>
+                                <li><Link to="/#!" className="hover-opacity">Регистрация продукта</Link></li>
+                                <li><Link to="/#!" className="hover-opacity">Сервис</Link></li>
+                                <li><Link to="/#!" className="hover-opacity">Сертификаты и лицензии</Link></li>
                             </ul>
                         </nav>
                     </CSSTransition>
@@ -66,7 +66,6 @@ function Header() {
 }
 
 export default Header;
-
 // import { useState } from 'react';
 // import "./header.css";
 // import logoImg from './../../images/icons/logo.png';
@@ -120,3 +119,4 @@ export default Header;
 // }
 
 // export default Header;
+

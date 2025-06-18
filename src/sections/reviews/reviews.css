@@ -153,6 +153,10 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .review-item__main-content {
@@ -304,6 +308,13 @@
         text-align: left;
         margin-left: 0;
     }
+    .review-item__left-panel .review-item__name-rating-group {
+        max-width: 100px;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 }
 
 
@@ -357,12 +368,17 @@
     }
 
     .review-item__left-panel {
+        max-width: 100px;
         width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 0;
-        margin: 0;
+        overflow: hidden;
+    }
+
+    .review-item__left-panel .review-item__name-rating-group {
+        max-width: 100px;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     .review-item__name-rating-group {

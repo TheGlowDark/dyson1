@@ -16,12 +16,12 @@ const ContactSubscription = () => {
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
-    if (emailError) setEmailError(''); // Clear error when typing
+    if (emailError) setEmailError(''); 
   };
 
   const handlePrivacyChange = (e) => {
     setPrivacyPolicyAccepted(e.target.checked);
-    if (privacyError) setPrivacyError(''); // Clear error when checking
+    if (privacyError) setPrivacyError(''); 
   };
 
   // Contact form handlers
@@ -34,8 +34,7 @@ const ContactSubscription = () => {
     const input = e.target.value;
     const previousValue = phone;
 
-    // Если ввод пуст или не начинается с '+7 ', сбрасываем до '+7 '
-    if (!input || !input.startsWith('+7 ')) {
+    if (!input) {
       setPhone('+7 ');
       e.target.setSelectionRange(4, 4); // Устанавливаем курсор после '+7 '
       return;
@@ -45,7 +44,7 @@ const ContactSubscription = () => {
     let digits = input.substring(3).replace(/\D/g, ''); // Получаем цифры после '+7 '
 
     // Ограничиваем до 10 цифр
-    digits = digits.substring(0, 10);
+    digits = digits.substring(0, 9);
 
     const newPhone = '+7 ' + digits;
     setPhone(newPhone);

@@ -13,7 +13,7 @@ const Sections = () => {
             id: 1,
             title: 'Акции',
             image: salesImg,
-            link: '/sales'
+            link: '/#!'
         },
         {
             id: 2,
@@ -25,13 +25,13 @@ const Sections = () => {
             id: 3,
             title: 'Стайлеры',
             image: stylerImg,
-            link: '/stylers'
+            link: '/#!'
         },
         {
             id: 4,
             title: 'Выпрямители',
             image: rectifierImg,
-            link: '/rectifiers'
+            link: '/#!'
         }
     ];
 
